@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
   def show 
     player = Player.find_by(id: params[:id])
     if player
-        render json: player
+        render json: player, status: :ok
     else 
         render json: { error: "Player not found" }, status: :not_found
     end
