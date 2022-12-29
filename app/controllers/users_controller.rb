@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-# skip_before_action :authorized, only: [:show, :create]
+skip_before_action :authorized, only: [:show, :create]
 
   # get current user
   def show
