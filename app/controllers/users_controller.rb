@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 require 'pry'
-skip_before_action :authorized, only: [:show, :create]
+# skip_before_action :authorized, only: [:show, :create]
 
   # get current user
   def show
