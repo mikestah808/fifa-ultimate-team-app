@@ -4,14 +4,16 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
-    user = User.find_by(id: session[:user_id])
-    teams = user.teams
+    # user = User.find_by(id: session[:user_id])
+    # teams = user.teams
+    teams = Team.all
     render json: teams
   end
 
   def show 
-    user = User.find_by(id: session[:user_id])
-    team = user.teams.find_by(id:params[:id])
+    # user = User.find_by(id: session[:user_id])
+    # team = user.teams.find_by(id:params[:id])
+    team = Team.find_by(id:params[:id])
     if team 
         render json: team, status: :ok
     else 
