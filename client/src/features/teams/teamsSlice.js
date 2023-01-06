@@ -17,10 +17,13 @@ const teamsSlice = createSlice({
   reducers: {
     teamAdded(state, action) {
       // using createSlice lets us mutate state!
-      state.entities.push(action.payload);
+      state.entities.push({
+        id: uuid(),
+        name: action.payload
+      });
     },
     teamRemoved(state, action) {
-      const index = state.entities.findIndex((team) => team === action.payload);
+      const index = state.entities.findIndex((team) => team.id === action.payload);
       state.entities.splice(index, 1);
     },
   },

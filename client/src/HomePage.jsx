@@ -1,8 +1,12 @@
 import React from 'react'
+import TeamsContainer from './features/teams/TeamsContainer'
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    <div>
+      HomePage
+    <TeamsContainer />
+    </div>
   )
 }
 
