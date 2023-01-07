@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 export const fetchTeams = createAsyncThunk("players/fetchTeams", () => {
   // return a Promise containing the data we want
-  return fetch("http://localhost:3000/teams")
+  return fetch("/teams")
     .then((response) => response.json())
     .then((teams) => teams);
 });

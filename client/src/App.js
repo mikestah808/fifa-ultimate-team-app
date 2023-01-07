@@ -5,12 +5,14 @@ import Signup from './authentication/Signup'
 import Login from './authentication/Login'
 import Countries from './Countries'
 import Teams from './Teams'
+import NavBar from './Navbar'
 
 function App() {
 
 
   return (
     <div className='App'>
+        <NavBar />
         <Routes>
           <Route exact path="/" element={ <HomePage /> } />
           <Route exact path="/login" element={ <Login /> } />

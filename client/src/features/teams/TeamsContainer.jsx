@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TeamInput from "./TeamInput";
 import Teams from "./Teams";
 import { useDispatch, useSelector } from "react-redux";
-import { teamAdded } from "./teamsSlice"
+import { fetchTeams, teamAdded } from "./teamsSlice"
 
 
 function TeamsContainer() {
@@ -12,6 +12,10 @@ function TeamsContainer() {
   function handleTeamSubmit(name){
     dispatch(teamAdded(name))
   }
+
+  useEffect(() => {
+    dispatch(fetchTeams());
+  }, [dispatch])
 
 
   return (
