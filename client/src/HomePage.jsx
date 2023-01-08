@@ -1,11 +1,11 @@
 import React from 'react'
-import TeamsContainer from './features/teams/TeamsContainer'
+// import TeamsContainer from './features/teams/TeamsContainer'
 
 function HomePage() {
   return (
     <div>
       HomePage
-    <TeamsContainer />
+    {/* <TeamsContainer /> */}
     </div>
   )
 }
