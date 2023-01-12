@@ -8,6 +8,15 @@ export const fetchUser = createAsyncThunk("user/fetchUser", () => {
     .then((user) => user);
 });
 
+export const logoutUser = createAsyncThunk("user/logoutUser", () => {
+    // return a Promise containing the data we want
+    return fetch("/logout", {
+        method: "DELETE",
+        headers: { 'Content-Type': 'application/json'}
+    })
+      .then((response) => response.json())
+  });
+
 
 const sessionsSlice = createSlice({
   name: "session",

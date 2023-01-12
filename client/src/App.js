@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import HomePage from './HomePage'
 import Signup from './authentication/Signup'
@@ -7,7 +7,23 @@ import Countries from './Countries'
 import Teams from './Teams'
 import NavBar from './Navbar'
 
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { fetchUser } from './features/sessions/sessionsSlice';
+
 function App() {
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
+  const currentUser = useSelector((state) => state.sessions.user)
+
+
+  useEffect(() => {
+    if(currentUser === {}){
+      navigate("/login")
+    } else {
+      dispatch(fetchUser())
+    }
+  }, [dispatch])
 
 
   return (
