@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit"
 import teamsReducer from "./features/teams/teamsSlice"
 import playersReducer from "./features/players/playersSlice"
 import usersReducer from "./features/users/usersSlice"
+import sessionsReducer from "./features/sessions/sessionsSlice"
 
 const store = configureStore({
   reducer: {
     users: usersReducer,
+    sessions: sessionsReducer,
     teams: teamsReducer,
     players: playersReducer,
   }

@@ -7,9 +7,12 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+
 
 
 function NavBar() {
+    // const currentUser = useSelector((state) => state.users.user)
 
 
 

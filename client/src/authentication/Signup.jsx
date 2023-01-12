@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 function Signup() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  // const currentUser = useSelector((state) => state.users.user)
+
   
   const [user, setUser] = useState({
     first_name: "",

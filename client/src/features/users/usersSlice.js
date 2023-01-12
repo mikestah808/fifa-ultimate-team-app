@@ -16,11 +16,11 @@ export const signup = createAsyncThunk("user/createUser", ({first_name, last_nam
 const usersSlice = createSlice({
   name: "users",
   initialState: {
-    user: {}, // array of user
+    user: {}, // user object 
     status: "idle", // loading state
   },
   reducers: {
-    userAdded(state, action) {
+    newUser(state, action) {
         // debugger;
       // using createSlice lets us mutate state!
       state.user = action.payload
@@ -42,6 +42,6 @@ const usersSlice = createSlice({
   }
 });
 
-export const { userAdded } = usersSlice.actions;
+export const { newUser } = usersSlice.actions;
 
 export default usersSlice.reducer;
