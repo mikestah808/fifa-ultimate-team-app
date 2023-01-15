@@ -8,7 +8,7 @@ import Login from './authentication/Login';
 function HomePage() {
   // const dispatch = useDispatch();
   // let navigate = useNavigate();
-  const currentUser = useSelector((state) => state.sessions.user) 
+  const currentUser = useSelector((state) => state.users.user) 
 
   console.log(currentUser)
 
@@ -23,7 +23,7 @@ function HomePage() {
 
 
 
-    if(currentUser.error !== "Not authorized"){
+    if(currentUser.error !== "Not authorized" && currentUser !== true){
       return (
         <div>
           HomePage

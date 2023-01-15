@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
     # login route 
     def create
         # look up a user in the database
+        # byebug
         user = User.find_by(email: params[:email])
         # verify their login credentials
         # authenticate is a special method given to us by Bcrypt where we can pass the password 

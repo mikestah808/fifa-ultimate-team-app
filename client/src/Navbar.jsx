@@ -6,23 +6,33 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from './features/sessions/sessionsSlice';
-
+import { logout } from './features/users/usersSlice';
 
 
 function NavBar() {
     const dispatch = useDispatch();
-    const currentUser = useSelector((state) => state.sessions.user)
+    const currentUser = useSelector((state) => state.users.user)
+    let navigate = useNavigate();
+
+    console.log(currentUser)
 
 
     function handleLogoutClick(){
-        dispatch(logoutUser(currentUser))
-        console.log("log me out!")
+        // debugger;
+        // fetch(`/logout`, {
+        //     method: "DELETE",
+        //     headers: {
+        //       "Content-type": "application/json"
+        //     }
+        //   })
+            dispatch(logout())
+            // navigate("/login")
+            console.log("log me out!")
     }
 
-    if(currentUser !== {} && currentUser !== undefined && currentUser.error !== 'Not authorized'){
+    if(currentUser !== {} && currentUser !== undefined && currentUser.error !== 'Not authorized' && currentUser !== true){
         return (
             <Box sx={{ flexGrow: 1 }}>
               <AppBar position="static">

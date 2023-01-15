@@ -9,21 +9,22 @@ import NavBar from './Navbar'
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchUser } from './features/sessions/sessionsSlice';
+import { fetchUser } from './features/users/usersSlice'
+import { current } from '@reduxjs/toolkit'
 
 function App() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
-  const currentUser = useSelector((state) => state.sessions.user)
+  const currentUser = useSelector((state) => state.users.user)
 
 
   useEffect(() => {
-    if(currentUser === {}){
+    if(currentUser === {} && currentUser === {"error": "Not authorized"}){
       navigate("/login")
     } else {
-      dispatch(fetchUser())
+      dispatch(fetchUser(currentUser))
     }
-  }, [dispatch])
+  }, [])
 
 
   return (
