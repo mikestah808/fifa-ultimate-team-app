@@ -16,8 +16,6 @@ function NavBar() {
     const currentUser = useSelector((state) => state.users.user)
     let navigate = useNavigate();
 
-    console.log(currentUser)
-
 
     function handleLogoutClick(){
         // debugger;
