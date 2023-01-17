@@ -7,7 +7,10 @@ import { fetchTeams, teamAdded } from "./teamsSlice"
 
 function TeamsContainer() {
   const dispatch = useDispatch();
-  const teams = useSelector((state) => state.teams.entities);
+  const usersTeams = useSelector((state) => state.teams.entities) 
+
+
+  console.log(usersTeams)
 
   function handleTeamSubmit(name){
     dispatch(teamAdded(name))
@@ -21,7 +24,7 @@ function TeamsContainer() {
   return (
     <div>
       <TeamInput handleTeamSubmit={handleTeamSubmit}/>
-      <Teams teams={teams}/>
+      <Teams teams={usersTeams}/>
     </div>
   );
 }

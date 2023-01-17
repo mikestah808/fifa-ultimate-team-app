@@ -4,13 +4,12 @@ import HomePage from './HomePage'
 import Signup from './authentication/Signup'
 import Login from './authentication/Login'
 import Countries from './Countries'
-import Teams from './Teams'
 import NavBar from './Navbar'
 
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from './features/users/usersSlice'
-import { current } from '@reduxjs/toolkit'
+import TeamsContainer from './features/teams/TeamsContainer'
 
 function App() {
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ function App() {
           <Route exact path="/login" element={ <Login /> } />
           <Route exact path="/signup" element={ <Signup /> } />
           <Route exact path="/countries" element={ <Countries /> } />
-          <Route exact path="/teams" element={ <Teams /> } />
+          <Route exact path="/teams" element={ <TeamsContainer /> } />
         </Routes>
     </div>
   )

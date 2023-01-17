@@ -4,9 +4,9 @@ class TeamsController < ApplicationController
 
   # GET /teams
   def index
-    # user = User.find_by(id: session[:user_id])
-    # teams = user.teams
-    teams = Team.all
+    user = User.find_by(id: session[:user_id])
+    teams = user.teams
+    # teams = Team.all
     render json: teams
   end
 

@@ -1,8 +1,9 @@
-// import { render } from "@testing-library/react";
+import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import Team from "./Team"
 
 function Teams({ teams }) {
+
 
   const renderTeams = teams.map((team) => {
     return (
@@ -11,7 +12,7 @@ function Teams({ teams }) {
   })
 
 
-  return <ul>{renderTeams}</ul>;
+  return <div>{renderTeams}</div>;
 }
 
 export default Teams;
