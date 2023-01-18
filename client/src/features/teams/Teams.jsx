@@ -1,9 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
 import React from "react";
 import Team from "./Team"
 
 function Teams({ teams }) {
 
+  console.log(teams)
 
   const renderTeams = teams.map((team) => {
     return (

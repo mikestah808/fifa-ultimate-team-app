@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createTeam } from "./teamsSlice";
+import { teamAdded } from "./teamsSlice";
 
-function TeamInput({ handleTeamSubmit }) {
+function TeamInput() {
   const [name, setName] = useState("")
+  const dispatch = useDispatch();
+
 
   function handleChange(event){
     setName(event.target.value)
@@ -9,7 +14,8 @@ function TeamInput({ handleTeamSubmit }) {
 
   function handleSubmit(event){
     event.preventDefault();
-    handleTeamSubmit(name)
+    dispatch(createTeam(name))
+    setName("")
   }
 
   return (

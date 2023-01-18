@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 // import { fetchUser } from './features/sessions/sessionsSlice';
 import Login from './authentication/Login';
+import { Button } from '@mui/material';
 // import TeamsContainer from './features/teams/TeamsContainer'
 
 function HomePage() {
@@ -33,7 +34,7 @@ function HomePage() {
           <br />
           <h1>Fun Facts</h1>
           <h4>{fact}</h4>
-          <button onClick={randomFact}>Fact</button>
+          <Button onClick={randomFact}>Fact</Button>
         </div>
       )
     } else {

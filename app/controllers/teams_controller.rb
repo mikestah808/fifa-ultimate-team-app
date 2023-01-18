@@ -42,7 +42,7 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   def destroy
     user = User.find_by(id: session[:user_id])
-    team = team.movies.find_by(id: params[:id])
+    team = user.teams.find_by(id: params[:id])
     team.destroy
     head :no_content
   end

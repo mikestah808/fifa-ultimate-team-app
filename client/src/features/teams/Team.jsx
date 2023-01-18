@@ -1,18 +1,15 @@
 import React from "react";
-// import ReviewsContainer from "../reviews/ReviewsContainer";
 import { useDispatch } from "react-redux"
-import { teamRemoved } from "./teamsSlice"
-// import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Button } from "@mui/material";
+import { deleteTeam } from "./teamsSlice";
 
 function Team({ team }) {
   const dispatch = useDispatch();
-  // Get the userId param from the URL.
-  // const { id } = useParams();
+  
 
   function handleDeleteClick(){
-    dispatch(teamRemoved(team))
+    dispatch(deleteTeam(team.id))
   }
 
   function handleViewClick(){
