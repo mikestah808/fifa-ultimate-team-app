@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux"
 function Player({ player }) {
   const dispatch = useDispatch();
 
-  const {name, position, age, club, pace, dribbling, shooting, defending, passing, physical } = player
+  const {name, position, age, club, pace, dribbling, shooting, defending, passing, physical, image_url } = player
 
   function handleDeleteClick(){
     // dispatch(reviewRemoved(review))
@@ -18,6 +18,7 @@ function Player({ player }) {
   <h4>Position: {position}</h4>
   {/* <p>Age: {age}</p> */}
   <h4>Club: {club}</h4>
+  <img src={image_url}/>
   <p>Pace: {pace}</p>
   <p>Dribbling: {dribbling}</p>
   <p>Shooting: {shooting}</p>

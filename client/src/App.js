@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from './HomePage'
 import Signup from './authentication/Signup'
 import Login from './authentication/Login'
-import Countries from './Countries'
+import Countries from './features/countries/Countries'
 import NavBar from './Navbar'
 import TeamDetails from './features/teams/TeamDetails'
 import { useSelector, useDispatch } from "react-redux";

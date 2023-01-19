@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
-// import { loginUser } from '../features/sessions/sessionsSlice';
+import { useDispatch } from 'react-redux';
 import { login } from '../features/users/usersSlice';
 
 
 function Login() {
   let navigate = useNavigate();
-  const user = useSelector(state => state.users.user)
+  // const user = useSelector(state => state.users.user)
   const dispatch = useDispatch();
 
     const [email, setEmail] = useState("")
@@ -26,42 +25,13 @@ function Login() {
         e.preventDefault()
         // debugger;
         if(userData.email !== "" && userData.password !== ""){
-          // dispatch(loginUser(userData))
-          fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-        .then((resp) => resp.json())
-        .then(user => dispatch(login(user)))
+          dispatch(login(userData))
           navigate("/")
         } else {
           console.log("Invalid email or password!")
           setEmail("")
           setPassword("")
         }
-        // fetch("/login", {
-        //   method: "POST",
-        //   headers: {"Content-Type": "application/json"},
-        //   body: JSON.stringify({
-        //     email: email,
-        //     password: password
-        //   })
-        // })
-        // .then((res) => res.json())
-        // .then(user => {
-        //   if (!user.error) {
-        //     navigate("/")
-        //     console.log("you have successfuly logged in")
-        //   } else {
-        //     setEmail("")
-        //     setPassword("")
-        //     console.log("invalid email or password")
-        //     setError("Invalid Email or Password")
-        //   }
-        // })
     }
 
     return (

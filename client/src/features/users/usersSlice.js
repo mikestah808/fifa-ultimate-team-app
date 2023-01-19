@@ -19,6 +19,17 @@ export const signup = createAsyncThunk("user/createUser", ({first_name, last_nam
         .then((user) => user)
 })
 
+export const login = createAsyncThunk("user/loginUser", ({email, password}) => {
+  // return a Promise containing the data we want
+  return fetch("/login", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify({email, password})
+      })
+      .then((resp) => resp.json())
+      .then((user) => user)
+})
+
 export const logout = createAsyncThunk("user/logoutUser", () => {
     // return a Promise containing the data we want
     return fetch("/logout", {
@@ -37,24 +48,7 @@ const usersSlice = createSlice({
     user: {}, // user object 
     status: "idle", // loading state
   },
-  reducers: {
-    newUser(state, action) {
-        // debugger;
-      // using createSlice lets us mutate state!
-      state.user = action.payload
-    },
-    login(state, action) {
-        // debugger;
-      state.user = action.payload
-    },
-    // logout(state, action) {
-    //     debugger;
-    //     // const index = state.user.find((user) => user.id === action.payload.id);
-    //     // state.user.splice(index, 1);
-    //     action.payload = {}
-    //     state.user = action.payload
-    // }
-  },
+
   extraReducers: (builder) => { 
     // handle async actions: pending, fulfilled, rejected (for errors)
     builder
@@ -85,9 +79,18 @@ const usersSlice = createSlice({
             state.user = action.payload;
         }
     })
+    .addCase(login.fulfilled, (state, action) => {
+        state.status = 'idle';
+        if (action.payload.errors){
+            state.errorMessages = action.payload.errors;
+        } else{
+            state.errorMessages = null;
+            state.user = action.payload;
+        }
+    })
   }
 });
 
-export const { newUser, login } = usersSlice.actions;
+// export const { login } = usersSlice.actions;
 
 export default usersSlice.reducer;
