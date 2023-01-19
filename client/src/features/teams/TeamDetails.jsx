@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
+import Player from '../players/Player';
 
 
 function TeamDetails() {
@@ -13,9 +14,9 @@ function TeamDetails() {
   })
 
 
-//figure out how to display the specific team objects players 
-//how do we do this???
-//
+const renderTeamsPlayers = selectedTeam.players.map((player) => {
+  return <Player key={player.id} player={player} />
+})
 
 
 
@@ -27,12 +28,15 @@ function TeamDetails() {
     }
   }, [usersTeams])
 
-  console.log("selected team", selectedTeam)
+  console.log("selected team", usersTeams)
 
 
   return (
     <div>
-        <h1>TEAM DETAILS</h1>
+        <h1>Team: {selectedTeam.name}</h1>
+        <br />
+        <h1>Players</h1>
+        <li>{renderTeamsPlayers}</li>
     </div>
       )
 }
