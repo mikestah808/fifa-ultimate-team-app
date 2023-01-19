@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import HomePage from './HomePage'
 import Signup from './authentication/Signup'
 import Login from './authentication/Login'
-import Countries from './features/countries/Countries'
+import CountriesContainer from './features/countries/CountriesContainer'
 import NavBar from './Navbar'
 import TeamDetails from './features/teams/TeamDetails'
 import { useSelector, useDispatch } from "react-redux";
@@ -34,7 +34,7 @@ function App() {
           <Route exact path="/" element={ <HomePage /> } />
           <Route exact path="/login" element={ <Login /> } />
           <Route exact path="/signup" element={ <Signup /> } />
-          <Route exact path="/countries" element={ <Countries /> } />
+          <Route exact path="/countries" element={ <CountriesContainer /> } />
           <Route exact path="/teams" element={ <TeamsContainer /> } />
           <Route exact path="/teams/:id" element={ <TeamDetails /> } />
         </Routes>

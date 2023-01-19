@@ -37,7 +37,6 @@ const teamsSlice = createSlice({
     entities: [], // array of teams
     status: "idle", // loading state
   },
-  
   extraReducers: (builder) => { 
     // handle async actions: pending, fulfilled, rejected (for errors)
     builder

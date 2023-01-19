@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { v4 as uuid } from "uuid";
 
 export const fetchCountries = createAsyncThunk("countries/fetchCountries", () => {
   // return a Promise containing the data we want
@@ -9,12 +8,12 @@ export const fetchCountries = createAsyncThunk("countries/fetchCountries", () =>
 });
 
 
-export const addCountry = createAsyncThunk("user/addCountry", (name) => {
+export const addCountry = createAsyncThunk("user/addCountry", () => {
   // return a Promise containing the data we want
   return fetch("/countries", {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({name})
+      body: JSON.stringify()
       })
       .then((resp) => resp.json())
       .then((countries) => countries)
@@ -62,6 +61,5 @@ const countriesSlice = createSlice({
   }
 });
 
-// export const { countryAdded } = teamsSlice.actions;
 
 export default countriesSlice.reducer;
