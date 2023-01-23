@@ -51,7 +51,7 @@ function PlayerInput({ teamId }) {
     setSelectedCountry(findCountry)
   };
 
-  console.log("selected country",selectedCountry.id)
+  // console.log("selected country",selectedCountry.id)
 
   // function handleChange(e) {
   //   setPlayer({...player,

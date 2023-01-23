@@ -12,7 +12,6 @@ class TeamsController < ApplicationController
 
   def show 
     user = User.find_by(id: session[:user_id])
-    # team = user.teams.find_by(id:params[:id])
     team = user.teams.find_by(id:params[:id])
     if team 
         render json: team, status: :ok

@@ -8,6 +8,13 @@ export const fetchTeams = createAsyncThunk("players/fetchTeams", () => {
     .then((teams) => teams);
 });
 
+// export const fetchTeam = createAsyncThunk("players/fetchTeam", (id) => {
+//   // return a Promise containing the data we want
+//   return fetch(`/teams/${id}`)
+//     .then((response) => response.json())
+//     .then((team) => team);
+// });
+
 
 export const createTeam = createAsyncThunk("user/createTeam", (name) => {
   // return a Promise containing the data we want

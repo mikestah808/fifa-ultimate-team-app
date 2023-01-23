@@ -7,7 +7,7 @@ import Player from '../players/Player';
 function CountryDetails() {
   // Get the teamId param from the URL.
   const { id } = useParams();
-  const countries = useSelector((state) => state.countries.entities) 
+  // const countries = useSelector((state) => state.countries.entities) 
 
   const [selectedCountry, setSelectedCountry] = useState({
     players: []
@@ -18,15 +18,21 @@ const renderCountriesPlayers = selectedCountry.players.map((player) => {
   return <Player key={player.id} player={player} />
 })
 
+useEffect(() => {
+  fetch(`/countries/${id}`)
+  .then((resp) => resp.json())
+  .then((country) => setSelectedCountry(country))
+},[])
 
 
- useEffect(() => {
-    //debugger;
-    const findCountry = countries.find(country => country.id === parseInt(id))
-    if (findCountry){
-      setSelectedCountry(findCountry)
-    }
-  }, [countries])
+
+//  useEffect(() => {
+//     //debugger;
+//     const findCountry = countries.find(country => country.id === parseInt(id))
+//     if (findCountry){
+//       setSelectedCountry(findCountry)
+//     }
+//   }, [countries])
 
   console.log("selected country", selectedCountry)
 
