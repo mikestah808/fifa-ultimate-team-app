@@ -13,16 +13,16 @@ export const createPlayer = createAsyncThunk("user/createPlayer", ({ name, age, 
       .then((player) => player)
 })
 
-// export const deleteTeam = createAsyncThunk("user/deleteTeam", (id) => {
-//   // return a Promise containing the data we want
-//   return fetch(`/teams/${id}`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-type": "application/json"
-//       }
-//     })
-//       .then((resp) => resp.ok)
-//   })
+export const deleteTeam = createAsyncThunk("user/deleteTeam", (id) => {
+  // return a Promise containing the data we want
+  return fetch(`/players/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+      .then((resp) => resp.ok)
+  })
 
 const playersSlice = createSlice({
   name: "players",
@@ -51,16 +51,16 @@ const playersSlice = createSlice({
             state.entities.push(action.payload)
         }
     })
-  //   .addCase(deleteTeam.fulfilled, (state, action) => {
-  //     state.status = 'idle';
-  //     if (action.payload.errors){
-  //         state.errorMessages = action.payload.errors;
-  //     } else{
-  //         state.errorMessages = null;
-  //         const index = state.entities.findIndex((team) => team.id === action.payload);
-  //         state.entities.splice(index, 1);
-  //     }
-  // })
+    .addCase(deleteTeam.fulfilled, (state, action) => {
+      state.status = 'idle';
+      if (action.payload.errors){
+          state.errorMessages = action.payload.errors;
+      } else{
+          state.errorMessages = null;
+          const index = state.entities.findIndex((team) => team.id === action.payload);
+          state.entities.splice(index, 1);
+      }
+  })
   }
 });
 

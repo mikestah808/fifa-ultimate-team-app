@@ -1,13 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux"
+import { Button } from "@mui/material";
+import { deleteTeam } from "./playersSlice";
 
 function Player({ player }) {
   const dispatch = useDispatch();
 
-  const {name, position, age, club, pace, dribbling, shooting, defending, passing, physical, image_url } = player
+  const {name, id, position, age, club, pace, dribbling, shooting, defending, passing, physical, image_url } = player
 
   function handleDeleteClick(){
-    // dispatch(reviewRemoved(review))
+    dispatch(deleteTeam(id))
   }
 
   return (
@@ -25,20 +27,11 @@ function Player({ player }) {
   <p>Defending: {defending}</p>
   <p>Passing: {passing}</p>
   <p>Physical: {physical}</p>
+  <Button>Edit</Button>
+  <Button onClick={handleDeleteClick}>Delete</Button>
 </div>
 </div>
   )
 }
 
 export default Player;
-
-// "position": "FWD",
-// "rating": 94,
-// "club": "Paris Saint Germain",
-// "price": 50000000,
-// "pace": 95,
-// "dribbling": 99,
-// "shooting": 92,
-// "defending": 50,
-// "passing": 95,
-// "physical": 40
