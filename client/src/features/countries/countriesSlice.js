@@ -8,12 +8,12 @@ export const fetchCountries = createAsyncThunk("countries/fetchCountries", () =>
 });
 
 
-export const addCountry = createAsyncThunk("user/addCountry", () => {
+export const addCountry = createAsyncThunk("user/addCountry", ({name, image_url}) => {
   // return a Promise containing the data we want
   return fetch("/countries", {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify()
+      body: JSON.stringify({name,image_url})
       })
       .then((resp) => resp.json())
       .then((countries) => countries)

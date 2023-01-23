@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from './features/users/usersSlice'
 import TeamsContainer from './features/teams/TeamsContainer'
+import CountryDetails from './features/countries/CountryDetails'
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/countries" element={ <CountriesContainer /> } />
           <Route exact path="/teams" element={ <TeamsContainer /> } />
           <Route exact path="/teams/:id" element={ <TeamDetails /> } />
+          <Route exact path="/countries/:id" element={ <CountryDetails /> } />
         </Routes>
     </div>
   )

@@ -1,5 +1,6 @@
 class PlayersController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    skip_before_action :authorized
 
   # GET /players
   def index
@@ -19,6 +20,7 @@ class PlayersController < ApplicationController
  
   # POST /players
   def create
+    # byebug
     player = Player.find_or_create_by!(player_params)
     render json: player, status: :created
   rescue ActiveRecord::RecordInvalid => e

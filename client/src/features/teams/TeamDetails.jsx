@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Player from '../players/Player';
+import PlayerInput from '../players/PlayerInput';
 
 
 function TeamDetails() {
@@ -33,6 +34,7 @@ const renderTeamsPlayers = selectedTeam.players.map((player) => {
 
   return (
     <div>
+        <PlayerInput teamId={id}/>
         <h1>Team: {selectedTeam.name}</h1>
         <br />
         <h1>Players</h1>

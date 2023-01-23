@@ -68,28 +68,9 @@ const teamsSlice = createSlice({
           state.entities.splice(index, 1);
       }
   })
-    // .addCase(logout.fulfilled, (state, action) => {
-    //     state.status = 'idle';
-    //     if (action.payload.errors){
-    //         state.errorMessages = action.payload.errors;
-    //     } else{
-    //         state.errorMessages = null;
-    //         state.user = action.payload;
-    //     }
-    // })
   }
-  // extraReducers: {
-  //   // handle async actions: pending, fulfilled, rejected (for errors)
-  //   [fetchTeams.pending](state) {
-  //     state.status = "loading";
-  //   },
-  //   [fetchTeams.fulfilled](state, action) {
-  //     state.entities = action.payload;
-  //     state.status = "idle";
-  //   },
-  // },
 });
 
-export const { teamAdded, teamRemoved } = teamsSlice.actions;
+// export const { teamAdded, teamRemoved } = teamsSlice.actions;
 
 export default teamsSlice.reducer;

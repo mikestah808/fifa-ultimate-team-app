@@ -21,6 +21,11 @@
 
 # Player.create(name: "Lionel Messi", age: 35, image_url: "https://img.a.transfermarkt.technology/portrait/big/28003-1671435885.jpg?lm=1", position: "FWD", rating: 94, club: "Paris Saint Germain", price: 50000000, pace: 95, dribbling: 99, shooting: 92, defending: 50, passing: 95, physical: 40, team_id: 1, country_id: 1)
 
+# Player.create(name: "Lionel Messi", age: 35, image_url: "https://img.a.transfermarkt.technology/portrait/big/28003-1671435885.jpg?lm=1", position: "FWD", rating: 94, club: "Paris Saint Germain", price: 50000000, pace: 95, dribbling: 99, shooting: 92, defending: 50, passing: 95, physical: 40, team_id: 1, country_id: 1)
+# Player.create(name: "Lionel Messi", age: 35, image_url: "https://img.a.transfermarkt.technology/portrait/big/28003-1671435885.jpg?lm=1", position: "FWD", rating: 94, club: "Paris Saint Germain", price: 50000000, pace: 95, dribbling: 99, shooting: 92, defending: 50, passing: 95, physical: 40, team_id: 1, country_id: 1)
+# Player.create(name: "Lionel Messi", age: 35, image_url: "https://img.a.transfermarkt.technology/portrait/big/28003-1671435885.jpg?lm=1", position: "FWD", rating: 94, club: "Paris Saint Germain", price: 50000000, pace: 95, dribbling: 99, shooting: 92, defending: 50, passing: 95, physical: 40, team_id: 1, country_id: 1)
+# Player.create(name: "Lionel Messi", age: 35, image_url: "https://img.a.transfermarkt.technology/portrait/big/28003-1671435885.jpg?lm=1", position: "FWD", rating: 94, club: "Paris Saint Germain", price: 50000000, pace: 95, dribbling: 99, shooting: 92, defending: 50, passing: 95, physical: 40, team_id: 1, country_id: 1)
+
 
 # AFTER WORKOUT AND EATING, SEED PLAYER DATA AND COUNTRY DATA AND SEE IF ASSOCIATIONS WORK PROPERLY IN RAILS CONSOLE
 # MAKE SURE TO COMMENT OUT SEEDED DATA AFTER USING RAILS DB: SEED!!!
