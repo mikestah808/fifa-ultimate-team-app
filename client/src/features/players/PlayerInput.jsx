@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { createPlayer } from "./playersSlice";
+import { fetchCountries } from "../countries/countriesSlice";
+import { useEffect } from "react";
 
 function PlayerInput({ teamId }) {
   //useDispatch hook from react 
@@ -14,18 +16,23 @@ function PlayerInput({ teamId }) {
 
   //component state for playerData
   const [name, setName] = useState("")
-  const [age, setAge] = useState(null)
+  const [age, setAge] = useState(0)
   const [image, setImage] = useState("")
   const [position, setPosition] = useState("")
-  const [rating, setRating] = useState(null)
+  const [rating, setRating] = useState(0)
   const [club, setClub] = useState("")
-  const [price, setPrice] = useState(null)
-  const [pace, setPace] = useState(null)
-  const [dribbling, setDribbling] = useState(null)
-  const [shooting, setShooting] = useState(null)
-  const [defending, setDefending] = useState(null)
-  const [passing, setPassing] = useState(null)
-  const [physical, setPhysical] = useState(null)
+  const [price, setPrice] = useState(0)
+  const [pace, setPace] = useState(0)
+  const [dribbling, setDribbling] = useState(0)
+  const [shooting, setShooting] = useState(0)
+  const [defending, setDefending] = useState(0)
+  const [passing, setPassing] = useState(0)
+  const [physical, setPhysical] = useState(0)
+
+  //useEfffect function to fetch countries on each page refresh 
+  useEffect(() => {
+    dispatch(fetchCountries)
+  },[])
 
  
   // const [player, setPlayer] = useState({
@@ -80,6 +87,7 @@ function PlayerInput({ teamId }) {
     country_id: selectedCountry.id
     }
     // debugger;
+    console.log(playerData)
     event.preventDefault();
     dispatch(createPlayer(playerData))
   }
@@ -95,7 +103,7 @@ function PlayerInput({ teamId }) {
       </label>
       <br />
       <label>Age
-      <input name="age" onChange={(event) => setAge(event.target.value)} value={age}/>
+      <input name="age" type="number" onChange={(event) => setAge(event.target.value)} value={age}/>
       </label>
       <br />
       <label>Image
@@ -107,7 +115,7 @@ function PlayerInput({ teamId }) {
       </label>
       <br />
       <label>Rating
-      <input name="rating" onChange={(event) => setRating(event.target.value)} value={rating}/>
+      <input name="rating" type="number" onChange={(event) => setRating(event.target.value)} value={rating}/>
       </label>
       <br />
       <label>Club
@@ -115,30 +123,30 @@ function PlayerInput({ teamId }) {
       </label>
       <br />
       <label>Price
-      <input name="price" onChange={(event) => setPrice(event.target.value)} value={price}/>
+      <input name="price" type="number" onChange={(event) => setPrice(event.target.value)} value={price}/>
       </label>
       <br />
       <label>Pace
-      <input name="pace" onChange={(event) => setPace(event.target.value)} value={pace}/>
+      <input name="pace" type="number" onChange={(event) => setPace(event.target.value)} value={pace}/>
       </label>
       <br />
       <label>Dribbling
-      <input name="dribbling" onChange={(event) => setDribbling(event.target.value)} value={dribbling}/>
+      <input name="dribbling" type="number" onChange={(event) => setDribbling(event.target.value)} value={dribbling}/>
       </label>
       <br />
       <label>Shooting
-      <input name="shooting" onChange={(event) => setShooting(event.target.value)} value={shooting}/>
+      <input name="shooting" type="number" onChange={(event) => setShooting(event.target.value)} value={shooting}/>
       </label>
       <br />
       <label>Defending
-      <input name="defending" onChange={(event) => setDefending(event.target.value)} value={defending}/>
+      <input name="defending" type="number"  onChange={(event) => setDefending(event.target.value)} value={defending}/>
       </label>
       <label>Passing
-      <input name="passing" onChange={(event) => setPassing(event.target.value)} value={passing}/>
+      <input name="passing" type="number" onChange={(event) => setPassing(event.target.value)} value={passing}/>
       </label>
       <br />
       <label>Physical
-      <input name="physical" onChange={(event) => setPhysical(event.target.value)} value={physical}/>
+      <input name="physical" type="number" onChange={(event) => setPhysical(event.target.value)} value={physical}/>
       </label>
       <br />
       <Button type="submit">add player</Button>

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Player from '../players/Player';
 import PlayerInput from '../players/PlayerInput';
-// import { fetchTeams } from "./teamsSlice"
-// import { fetchTeam } from './teamsSlice';
+import { fetchTeam } from './teamsSlice';
 
 
 function TeamDetails() {
   // const dispatch = useDispatch();
   // Get the teamId param from the URL.
   const { id } = useParams();
-  // const usersTeams = useSelector((state) => state.teams.entities) 
+  // const selectedTeam = useSelector((state) => state.teams.entities) 
 
   const [selectedTeam, setSelectedTeam] = useState({
     players: []
   })
 
-  //when page is refreshed, selectedTeam is empty 
-  //in order to fix this, we must use a useEffect function that will populate the state of selectedTeam with the found team based on whether the team.id matches the id of the param
+  // useEffect(() => {
+  //   dispatch(fetchTeam(id))
+  // },[dispatch])
 
   console.log(selectedTeam)
 
@@ -34,13 +34,6 @@ useEffect(() => {
 },[])
 
 
-//  useEffect(() => {
-//     // debugger;
-//     const findTeam = usersTeams.find(team => team.id === parseInt(id))
-//     if (findTeam){
-//       setSelectedTeam(findTeam)
-//     }
-//   }, [])
 
 
   return (

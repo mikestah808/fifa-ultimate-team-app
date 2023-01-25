@@ -1,19 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 
 
-export const createPlayer = createAsyncThunk("user/createPlayer", ({ name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id }) => {
+export const createPlayer = createAsyncThunk("player/createPlayer", (name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id) => {
   // return a Promise containing the data we want
   return fetch("/players", {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
-      body: JSON.stringify({ name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id })
+      body: JSON.stringify(name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id)
       })
       .then((resp) => resp.json())
       .then((player) => player)
 })
 
-export const deleteTeam = createAsyncThunk("user/deleteTeam", (id) => {
+export const deletePlayer = createAsyncThunk("player/deletePlayer", (id) => {
   // return a Promise containing the data we want
   return fetch(`/players/${id}`, {
       method: "DELETE",
@@ -43,22 +43,41 @@ const playersSlice = createSlice({
     //     }
     // })
     .addCase(createPlayer.fulfilled, (state, action) => {
+      // debugger;
         state.status = 'idle';
         if (action.payload.errors){
             state.errorMessages = action.payload.errors;
         } else{
             state.errorMessages = null;
-            state.entities.push(action.payload)
+            state.entities.push({
+              id: uuid(),
+              name: action.payload.name, 
+              age: action.payload.age, 
+              image_url: action.payload.image_url, 
+              position: action.payload.position, 
+              rating: action.payload.rating, 
+              club: action.payload.club, 
+              price: action.payload.price, 
+              pace: action.payload.pace, 
+              dribbling: action.payload.dribbling, 
+              shooting: action.payload.shooting, 
+              defending: action.payload.defending, 
+              passing: action.payload.passing, 
+              physical: action.payload.physical, 
+              team_id: action.payload.team_id, 
+              country_id: action.payload.country_id
+            })
         }
     })
-    .addCase(deleteTeam.fulfilled, (state, action) => {
+    .addCase(deletePlayer.fulfilled, (state, action) => {
+      debugger;
       state.status = 'idle';
       if (action.payload.errors){
           state.errorMessages = action.payload.errors;
       } else{
           state.errorMessages = null;
-          const index = state.entities.findIndex((team) => team.id === action.payload);
-          state.entities.splice(index, 1);
+          const index = state.entities.findIndex((player) => player.id === action.payload.id)
+          state.entities.splice(index, 1)
       }
   })
   }

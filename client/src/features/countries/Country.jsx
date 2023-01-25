@@ -1,20 +1,16 @@
 import React from "react";
-// import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom';
 import { Button } from "@mui/material";
+import { deleteCountry } from "./countriesSlice";
 
 function Team({ country }) {
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   
 
-//   function handleDeleteClick(){
-//     dispatch(deleteTeam(team.id))
-//   }
-
-//   function handleViewClick(){
-//     //when this function is invoked, it should redirect and change the path of url to ---> "/teams/${id}"
-//     console.log("specific team!!")
-//   }
+  function handleDeleteClick(){
+    dispatch(deleteCountry(country.id))
+  }
 
 
   return (
@@ -22,7 +18,7 @@ function Team({ country }) {
       <li>
         <h4>{country.name}</h4>
         <Button component={ Link } to={`${country.id}`}>View Country</Button>
-        {/* <Button onClick={handleDeleteClick}> Delete Country </Button> */}
+        <Button onClick={handleDeleteClick}> Delete Country </Button>
       </li>
     </div>
   );

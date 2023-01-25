@@ -1,22 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { v4 as uuid } from "uuid";
+import { v4 as uuid } from "uuid";
 
-export const fetchTeams = createAsyncThunk("players/fetchTeams", () => {
+export const fetchTeams = createAsyncThunk("team/fetchTeams", () => {
   // return a Promise containing the data we want
   return fetch("/teams")
     .then((response) => response.json())
     .then((teams) => teams);
 });
 
-// export const fetchTeam = createAsyncThunk("players/fetchTeam", (id) => {
-//   // return a Promise containing the data we want
-//   return fetch(`/teams/${id}`)
-//     .then((response) => response.json())
-//     .then((team) => team);
-// });
+export const fetchTeam = createAsyncThunk("team/fetchTeam", (id) => {
+  // return a Promise containing the data we want
+  return fetch(`/teams/${id}`)
+    .then((response) => response.json())
+    .then((team) => team);
+});
 
 
-export const createTeam = createAsyncThunk("user/createTeam", (name) => {
+export const createTeam = createAsyncThunk("team/createTeam", (name) => {
   // return a Promise containing the data we want
   return fetch("/teams", {
       method: "POST",
@@ -56,13 +56,25 @@ const teamsSlice = createSlice({
             state.entities = action.payload;
         }
     })
+    .addCase(fetchTeam.fulfilled, (state, action) => {
+      state.status = 'idle';
+      if (action.payload.errors){
+          state.errorMessages = action.payload.errors;
+      } else{
+          state.errorMessages = null;
+          state.entities = action.payload;
+      }
+  })
     .addCase(createTeam.fulfilled, (state, action) => {
         state.status = 'idle';
         if (action.payload.errors){
             state.errorMessages = action.payload.errors;
         } else{
             state.errorMessages = null;
-            state.entities.push(action.payload)
+            state.entities.push({
+              id: uuid(),
+              name: action.payload
+            })
         }
     })
     .addCase(deleteTeam.fulfilled, (state, action) => {
@@ -71,13 +83,11 @@ const teamsSlice = createSlice({
           state.errorMessages = action.payload.errors;
       } else{
           state.errorMessages = null;
-          const index = state.entities.findIndex((team) => team.id === action.payload);
-          state.entities.splice(index, 1);
+          const index = state.entities.findIndex((team) => team.id === action.payload)
+          state.entities.splice(index, 1)
       }
   })
   }
 });
-
-// export const { teamAdded, teamRemoved } = teamsSlice.actions;
 
 export default teamsSlice.reducer;

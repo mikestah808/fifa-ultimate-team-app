@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux"
 import { Button } from "@mui/material";
-import { deleteTeam } from "./playersSlice";
+import { deletePlayer } from "./playersSlice";
 
 function Player({ player }) {
   const dispatch = useDispatch();
@@ -9,7 +9,7 @@ function Player({ player }) {
   const {name, id, position, age, club, pace, dribbling, shooting, defending, passing, physical, image_url } = player
 
   function handleDeleteClick(){
-    dispatch(deleteTeam(id))
+    dispatch(deletePlayer(id))
   }
 
   return (
