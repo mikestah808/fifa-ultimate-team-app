@@ -27,7 +27,7 @@ export const deletePlayer = createAsyncThunk("player/deletePlayer", (id) => {
 const playersSlice = createSlice({
   name: "players",
   initialState: {
-    entities: [], // array of teams
+    entities: [], // array of players
     status: "idle", // loading state
   },
   extraReducers: (builder) => { 
@@ -48,6 +48,7 @@ const playersSlice = createSlice({
         if (action.payload.errors){
             state.errorMessages = action.payload.errors;
         } else{
+            // debugger;
             state.errorMessages = null;
             state.entities.push({
               id: uuid(),
@@ -70,11 +71,12 @@ const playersSlice = createSlice({
         }
     })
     .addCase(deletePlayer.fulfilled, (state, action) => {
-      debugger;
+      // debugger;
       state.status = 'idle';
       if (action.payload.errors){
           state.errorMessages = action.payload.errors;
       } else{
+          // debugger;
           state.errorMessages = null;
           const index = state.entities.findIndex((player) => player.id === action.payload.id)
           state.entities.splice(index, 1)

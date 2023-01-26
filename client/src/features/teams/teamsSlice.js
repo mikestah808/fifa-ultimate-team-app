@@ -44,6 +44,15 @@ const teamsSlice = createSlice({
     entities: [], // array of teams
     status: "idle", // loading state
   },
+  reducers: {
+    playerAddedToTeam(state, action) {
+      state.entities.players.push(action.payload)
+    },
+    playerRemovedFromTeam(state, action) {
+      const index = state.entities.players.findIndex((player) => player.id === action.payload)
+      state.entities.players.splice(index, 1)
+    },
+  },
   extraReducers: (builder) => { 
     // handle async actions: pending, fulfilled, rejected (for errors)
     builder
@@ -89,5 +98,7 @@ const teamsSlice = createSlice({
   })
   }
 });
+
+export const { playerAddedToTeam, playerRemovedFromTeam } = teamsSlice.actions;
 
 export default teamsSlice.reducer;

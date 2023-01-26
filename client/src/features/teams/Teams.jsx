@@ -5,7 +5,7 @@ function Teams({ teams }) {
 
   console.log(teams)
 
-  const renderTeams = teams.map((team) => {
+  const renderTeams = teams?.map((team) => {
     return (
       <Team key={team.id} team={team}/>
     )

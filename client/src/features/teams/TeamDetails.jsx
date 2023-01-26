@@ -1,37 +1,37 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Player from '../players/Player';
 import PlayerInput from '../players/PlayerInput';
 import { fetchTeam } from './teamsSlice';
 
 
 function TeamDetails() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // Get the teamId param from the URL.
   const { id } = useParams();
-  // const selectedTeam = useSelector((state) => state.teams.entities) 
+  const selectedTeam = useSelector((state) => state.teams.entities) 
 
-  const [selectedTeam, setSelectedTeam] = useState({
-    players: []
-  })
+  // const [selectedTeam, setSelectedTeam] = useState({
+  //   players: []
+  // })
 
-  // useEffect(() => {
-  //   dispatch(fetchTeam(id))
-  // },[dispatch])
+  useEffect(() => {
+    dispatch(fetchTeam(id))
+  },[dispatch])
 
   console.log(selectedTeam)
 
 
-const renderTeamsPlayers = selectedTeam.players.map((player) => {
+const renderTeamsPlayers = selectedTeam.players?.map((player) => {
   return <Player key={player.id} player={player} />
 })
 
-useEffect(() => {
-  fetch(`/teams/${id}`)
-  .then((resp) => resp.json())
-  .then((team) => setSelectedTeam(team))
-},[])
+// useEffect(() => {
+//   fetch(`/teams/${id}`)
+//   .then((resp) => resp.json())
+//   .then((team) => setSelectedTeam(team))
+// },[])
 
 
 

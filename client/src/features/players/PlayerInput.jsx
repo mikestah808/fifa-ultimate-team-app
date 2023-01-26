@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { createPlayer } from "./playersSlice";
 import { fetchCountries } from "../countries/countriesSlice";
 import { useEffect } from "react";
+import { playerAddedToTeam } from "../teams/teamsSlice";
 
 function PlayerInput({ teamId }) {
   //useDispatch hook from react 
@@ -90,6 +91,10 @@ function PlayerInput({ teamId }) {
     console.log(playerData)
     event.preventDefault();
     dispatch(createPlayer(playerData))
+
+    // the player object that was just added to state!!!
+    dispatch(playerAddedToTeam(playerData))
+    
   }
 
 
