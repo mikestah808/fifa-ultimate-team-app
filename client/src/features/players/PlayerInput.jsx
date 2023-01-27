@@ -30,42 +30,19 @@ function PlayerInput({ teamId }) {
   const [passing, setPassing] = useState(0)
   const [physical, setPhysical] = useState(0)
 
-  //useEfffect function to fetch countries on each page refresh 
+  // useEfffect function to fetch countries on each page refresh 
   useEffect(() => {
-    dispatch(fetchCountries)
-  },[])
+    dispatch(fetchCountries())
+  },[dispatch])
 
  
-  // const [player, setPlayer] = useState({
-  //   name: "",
-  //   age: null,
-  //   image_url: "",
-  //   position: "",
-  //   rating: null,
-  //   club: "",
-  //   price: null,
-  //   pace: null,
-  //   dribbling: null,
-  //   shooting: null,
-  //   defending: null,
-  //   passing: null,
-  //   physical: null,
-  //   country_id: 1,
-  //   team_id: teamId
-  // })
+
 
   function handleCountryChange(event){ 
     const findCountry = countries.find((country) => country.id === event.target.value)
     setSelectedCountry(findCountry)
   };
 
-  // console.log("selected country",selectedCountry.id)
-
-  // function handleChange(e) {
-  //   setPlayer({...player,
-  //     [e.target.name] : e.target.value
-  //   })
-  // }
 
 
   function handleSubmit(event){

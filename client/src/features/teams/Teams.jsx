@@ -1,18 +1,18 @@
-import React from "react";
-import Team from "./Team"
+// import React from "react";
+// import Team from "./Team"
 
-function Teams({ teams }) {
+// function Teams({ teams }) {
 
-  console.log(teams)
+//   console.log(teams)
 
-  const renderTeams = teams?.map((team) => {
-    return (
-      <Team key={team.id} team={team}/>
-    )
-  })
+//   const renderTeams = teams?.map((team) => {
+//     return (
+//       <Team key={team.id} team={team}/>
+//     )
+//   })
 
 
-  return <div>{renderTeams}</div>;
-}
+//   return <div>{renderTeams}</div>;
+// }
 
-export default Teams;
+// export default Teams;

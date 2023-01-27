@@ -15,6 +15,14 @@ function TeamDetails() {
   // const [selectedTeam, setSelectedTeam] = useState({
   //   players: []
   // })
+  
+  // const countries = useSelector((state) => state.countries.entities)
+  // const [selectedCountry, setSelectedCountry] = useState({})
+
+  //useEfffect function to fetch countries on each page refresh 
+  // useEffect(() => {
+  //   dispatch(fetchCountries())
+  // },[dispatch])
 
   useEffect(() => {
     dispatch(fetchTeam(id))

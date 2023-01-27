@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { v4 as uuid } from "uuid";
+// import { v4 as uuid } from "uuid";
 
 export const fetchTeams = createAsyncThunk("team/fetchTeams", () => {
   // return a Promise containing the data we want
@@ -46,9 +46,11 @@ const teamsSlice = createSlice({
   },
   reducers: {
     playerAddedToTeam(state, action) {
+      // debugger;
       state.entities.players.push(action.payload)
     },
     playerRemovedFromTeam(state, action) {
+      // debugger;
       const index = state.entities.players.findIndex((player) => player.id === action.payload)
       state.entities.players.splice(index, 1)
     },
@@ -80,10 +82,7 @@ const teamsSlice = createSlice({
             state.errorMessages = action.payload.errors;
         } else{
             state.errorMessages = null;
-            state.entities.push({
-              id: uuid(),
-              name: action.payload
-            })
+            state.entities.push(action.payload)
         }
     })
     .addCase(deleteTeam.fulfilled, (state, action) => {
