@@ -45,9 +45,14 @@ const teamsSlice = createSlice({
     status: "idle", // loading state
   },
   reducers: {
+    
     playerAddedToTeam(state, action) {
       // debugger;
       state.entities.players.push(action.payload)
+    },
+    playerUpdated(state, action) {
+      const findPlayer = state.entities.players.find((player) => player.id === action.payload.id);
+      findPlayer.id = action.payload.id;
     },
     playerRemovedFromTeam(state, action) {
       // debugger;
@@ -98,6 +103,6 @@ const teamsSlice = createSlice({
   }
 });
 
-export const { playerAddedToTeam, playerRemovedFromTeam } = teamsSlice.actions;
+export const { playerAddedToTeam, playerUpdated, playerRemovedFromTeam } = teamsSlice.actions;
 
 export default teamsSlice.reducer;

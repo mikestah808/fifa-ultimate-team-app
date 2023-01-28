@@ -3,7 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Player from '../players/Player';
 import PlayerInput from '../players/PlayerInput';
+import PlayerEdit from '../players/PlayerEdit';
 import { fetchTeam } from './teamsSlice';
+import { Button } from '@mui/material';
 
 
 function TeamDetails() {
@@ -11,18 +13,20 @@ function TeamDetails() {
   // Get the teamId param from the URL.
   const { id } = useParams();
   const selectedTeam = useSelector((state) => state.teams.entities) 
+  //use state for whether form will be ADD PLAYER OR EDIT PLAYER
+  const [showAddPlayerForm, setShowAddPlayerForm] = useState(false)
+  const [showEditPlayerForm, setShowEditPlayerForm] = useState(false)
 
-  // const [selectedTeam, setSelectedTeam] = useState({
-  //   players: []
-  // })
-  
-  // const countries = useSelector((state) => state.countries.entities)
-  // const [selectedCountry, setSelectedCountry] = useState({})
+  function addPlayerFormClick(){
+    setShowAddPlayerForm(showAddPlayerForm => !showAddPlayerForm)
+  }
 
-  //useEfffect function to fetch countries on each page refresh 
-  // useEffect(() => {
-  //   dispatch(fetchCountries())
-  // },[dispatch])
+  function editPlayerFormClick(){
+    setShowEditPlayerForm(showEditPlayerForm => !showEditPlayerForm)
+  }
+
+
+
 
   useEffect(() => {
     dispatch(fetchTeam(id))
@@ -35,21 +39,18 @@ const renderTeamsPlayers = selectedTeam.players?.map((player) => {
   return <Player key={player.id} player={player} />
 })
 
-// useEffect(() => {
-//   fetch(`/teams/${id}`)
-//   .then((resp) => resp.json())
-//   .then((team) => setSelectedTeam(team))
-// },[])
-
-
 
 
   return (
     <div>
-        <PlayerInput teamId={id}/>
+        {/* <PlayerInput teamId={id}/> */}
         <h1>Team: {selectedTeam.name}</h1>
         <br />
-        <h1>Players</h1>
+        <h1>PLAYERS</h1>
+        <Button onClick={addPlayerFormClick}>Add Player</Button>
+        <Button onClick={editPlayerFormClick}>Edit Player</Button>
+        {showAddPlayerForm ? <PlayerInput teamId={id} /> : null}
+        {showEditPlayerForm ? <PlayerEdit teamId={id}/> : null}
         <li>{renderTeamsPlayers}</li>
     </div>
       )

@@ -13,6 +13,17 @@ export const createPlayer = createAsyncThunk("player/createPlayer", (name, age, 
       .then((player) => player)
 })
 
+export const updatePlayer = createAsyncThunk("player/updatePlayer", (id, name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id) => {
+  // return a Promise containing the data we want
+  return fetch(`/players/${id.id}`, {
+      method: "PATCH",
+      headers: { 'Content-Type': 'application/json'},
+      body: JSON.stringify(id, name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id)
+      })
+      .then((resp) => resp.json())
+      .then((player) => player)
+})
+
 export const deletePlayer = createAsyncThunk("player/deletePlayer", (id) => {
   // return a Promise containing the data we want
   return fetch(`/players/${id}`, {

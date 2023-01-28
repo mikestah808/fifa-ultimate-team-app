@@ -29,6 +29,7 @@ class PlayersController < ApplicationController
 
   # PATCH/PUT /players/1
   def update
+    # byebug
     player = Player.find_by(id: params[:id])
     player.update(player_params)
     render json: player

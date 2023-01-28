@@ -3,11 +3,24 @@ import { useDispatch } from "react-redux"
 import { Button } from "@mui/material";
 import { deletePlayer } from "./playersSlice";
 import { playerRemovedFromTeam } from "../teams/teamsSlice";
+import { useState } from "react";
+import PlayerEdit from "./PlayerEdit";
 
 function Player({ player }) {
   const dispatch = useDispatch();
+  const [showForm, setShowForm] = useState(false)
 
   const {name, id, position, age, club, pace, dribbling, shooting, defending, passing, physical, image_url } = player
+
+  function handleEditClick(){
+    console.log(player)
+    //how do we get the edit form to pop up?
+    //use component state to say where value is true or false, depending on whether button was clicked or not 
+    //if the value is true, then you will render the PlayerInput component 
+    //else, then PlayerInput component will not be rendered 
+    setShowForm(showForm => !showForm)
+  }
+
 
   function handleDeleteClick(){
     dispatch(deletePlayer(id))
@@ -29,8 +42,9 @@ function Player({ player }) {
   <p>Defending: {defending}</p>
   <p>Passing: {passing}</p>
   <p>Physical: {physical}</p>
-  <Button>Edit</Button>
+  <Button onClick={handleEditClick}>Edit</Button>
   <Button onClick={handleDeleteClick}>Delete</Button>
+  {showForm ? <PlayerEdit player={player} />: null}
 </div>
 </div>
   )
