@@ -74,7 +74,7 @@ function PlayerEdit({ player }) {
     dispatch(updatePlayer(playerData))
 
     // the player object that was just updated to state!!!
-    // dispatch(playerUpdated(playerData))
+    dispatch(playerUpdated(playerData))
     
   }
 

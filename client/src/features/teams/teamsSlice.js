@@ -51,8 +51,23 @@ const teamsSlice = createSlice({
       state.entities.players.push(action.payload)
     },
     playerUpdated(state, action) {
-      const findPlayer = state.entities.players.find((player) => player.id === action.payload.id);
-      findPlayer.id = action.payload.id;
+      // debugger;
+      const player = state.entities.players.find((player) => player.id === action.payload.id);
+      player.country_id = action.payload.country_id
+      player.name = action.payload.name
+      player.age = action.payload.age
+      player.image_url = action.payload.image_url
+      player.position = action.payload.position
+      player.rating = action.payload.rating
+      player.club = action.payload.club
+      player.price = action.payload.price
+      player.pace = action.payload.pace
+      player.dribbling = action.payload.dribbling
+      player.shooting = action.payload.shooting
+      player.defending = action.payload.defending
+      player.passing = action.payload.passing
+      player.physical = action.payload.physical
+      //after you find the player that matches the action.payload.id, you want to replace the player with the action.payload (updatedPlayer)
     },
     playerRemovedFromTeam(state, action) {
       // debugger;
