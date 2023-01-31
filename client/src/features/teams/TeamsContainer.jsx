@@ -7,14 +7,14 @@ import { fetchTeams } from "./teamsSlice"
 import Team from "./Team";
 
 function TeamsContainer() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const usersTeams = useSelector((state) => state.teams.entities) 
 
 
-  useEffect(() => {
-    // debugger;
-    dispatch(fetchTeams());
-  }, [dispatch])
+  // useEffect(() => {
+  //   // debugger;
+  //   dispatch(fetchTeams());
+  // }, [dispatch])
 
   const renderTeams = usersTeams.map((team) => {
     return <Team key={team.id} team={team} />

@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchUser } from './features/users/usersSlice'
 import TeamsContainer from './features/teams/TeamsContainer'
 import CountryDetails from './features/countries/CountryDetails'
+import { fetchTeams } from './features/teams/teamsSlice'
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
       navigate("/login")
     } else {
       dispatch(fetchUser(currentUser))
+      dispatch(fetchTeams())
     }
   }, [])
 

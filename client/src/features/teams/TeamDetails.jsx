@@ -9,13 +9,22 @@ import { Button } from '@mui/material';
 
 
 function TeamDetails() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // Get the teamId param from the URL.
   const { id } = useParams();
-  const selectedTeam = useSelector((state) => state.teams.entities) 
+  const teams = useSelector((state) => state.teams.entities) 
   //use state for whether form will be ADD PLAYER OR EDIT PLAYER
   const [showAddPlayerForm, setShowAddPlayerForm] = useState(false)
   const [showEditPlayerForm, setShowEditPlayerForm] = useState(false)
+  const [team, setTeam] = useState({name: ""})
+
+  useEffect(() => {
+    const findTeam = teams?.find((team) => team.id === parseInt(id))
+    if(findTeam){
+      setTeam(findTeam)
+    }
+  },[teams])
+
 
   function addPlayerFormClick(){
     setShowAddPlayerForm(showAddPlayerForm => !showAddPlayerForm)
@@ -27,15 +36,7 @@ function TeamDetails() {
 
 
 
-
-  useEffect(() => {
-    dispatch(fetchTeam(id))
-  },[dispatch])
-
-  console.log(selectedTeam)
-
-
-const renderTeamsPlayers = selectedTeam.players?.map((player) => {
+const renderTeamPlayers = team.players?.map((player) => {
   return <Player key={player.id} player={player} />
 })
 
@@ -44,14 +45,14 @@ const renderTeamsPlayers = selectedTeam.players?.map((player) => {
   return (
     <div>
         {/* <PlayerInput teamId={id}/> */}
-        <h1>Team: {selectedTeam.name}</h1>
+        <h1>Team: {team.name}</h1>
         <br />
         <h1>PLAYERS</h1>
         <Button onClick={addPlayerFormClick}>Add Player</Button>
         <Button onClick={editPlayerFormClick}>Edit Player</Button>
         {showAddPlayerForm ? <PlayerInput teamId={id} /> : null}
         {showEditPlayerForm ? <PlayerEdit teamId={id}/> : null}
-        <li>{renderTeamsPlayers}</li>
+        <li>{renderTeamPlayers}</li>
     </div>
       )
 }

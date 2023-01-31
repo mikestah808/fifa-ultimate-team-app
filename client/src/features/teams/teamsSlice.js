@@ -31,9 +31,7 @@ export const deleteTeam = createAsyncThunk("user/deleteTeam", (id) => {
   // return a Promise containing the data we want
   return fetch(`/teams/${id}`, {
       method: "DELETE",
-      headers: {
-        "Content-type": "application/json"
-      }
+      headers: {"Content-type": "application/json"}
     })
       .then((resp) => resp.ok)
   })
@@ -48,11 +46,18 @@ const teamsSlice = createSlice({
     
     playerAddedToTeam(state, action) {
       // debugger;
-      state.entities.players.push(action.payload)
+      // state.entities.push(action.payload)
+      //find the team using .find and return the team that is equal to the action.payload.team_id
+      const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
+      //after finding the team, you want to push the player object into the array of findTeam 
+      findTeam.players.push(action.payload)
     },
     playerUpdated(state, action) {
       // debugger;
-      const player = state.entities.players.find((player) => player.id === action.payload.id);
+      //find the team using .find and return the team that is equal to the action.payload.team_id
+      const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
+      //now find the player by using .find on findTeam object 
+      const player = findTeam.players.find((player) => player.id === action.payload.id);
       player.country_id = action.payload.country_id
       player.name = action.payload.name
       player.age = action.payload.age
@@ -70,9 +75,12 @@ const teamsSlice = createSlice({
       //after you find the player that matches the action.payload.id, you want to replace the player with the action.payload (updatedPlayer)
     },
     playerRemovedFromTeam(state, action) {
-      // debugger;
-      const index = state.entities.players.findIndex((player) => player.id === action.payload)
-      state.entities.players.splice(index, 1)
+      debugger;
+      const findTeam = state.entities.find((team) => team.id !== action.payload.team_id)
+      //after finding the team, you want to filter through the team players and return players that ARE NOT EQUAL to the action.payload.id
+      const teamPlayers = findTeam.players.filter((player) => player.id !== action.payload)
+      //after filtering through the team players, you want to replace the team players with the NEW TEAM PLAYERS
+      findTeam.players.splice(teamPlayers, 1)
     },
   },
   extraReducers: (builder) => { 
