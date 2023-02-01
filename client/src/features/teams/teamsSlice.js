@@ -8,12 +8,12 @@ export const fetchTeams = createAsyncThunk("team/fetchTeams", () => {
     .then((teams) => teams);
 });
 
-export const fetchTeam = createAsyncThunk("team/fetchTeam", (id) => {
-  // return a Promise containing the data we want
-  return fetch(`/teams/${id}`)
-    .then((response) => response.json())
-    .then((team) => team);
-});
+// export const fetchTeam = createAsyncThunk("team/fetchTeam", (id) => {
+//   // return a Promise containing the data we want
+//   return fetch(`/teams/${id}`)
+//     .then((response) => response.json())
+//     .then((team) => team);
+// });
 
 
 export const createTeam = createAsyncThunk("team/createTeam", (name) => {
@@ -75,12 +75,12 @@ const teamsSlice = createSlice({
       //after you find the player that matches the action.payload.id, you want to replace the player with the action.payload (updatedPlayer)
     },
     playerRemovedFromTeam(state, action) {
-      debugger;
-      const findTeam = state.entities.find((team) => team.id !== action.payload.team_id)
-      //after finding the team, you want to filter through the team players and return players that ARE NOT EQUAL to the action.payload.id
-      const teamPlayers = findTeam.players.filter((player) => player.id !== action.payload)
-      //after filtering through the team players, you want to replace the team players with the NEW TEAM PLAYERS
-      findTeam.players.splice(teamPlayers, 1)
+      // debugger;
+
+      const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
+      // const findTeam = state.entities.find((team) => team.id !== action.payload.team_id)
+      const index = findTeam.players.findIndex((player) => player.id === action.payload.id)
+      findTeam.players.splice(index, 1)
     },
   },
   extraReducers: (builder) => { 
@@ -95,15 +95,15 @@ const teamsSlice = createSlice({
             state.entities = action.payload;
         }
     })
-    .addCase(fetchTeam.fulfilled, (state, action) => {
-      state.status = 'idle';
-      if (action.payload.errors){
-          state.errorMessages = action.payload.errors;
-      } else{
-          state.errorMessages = null;
-          state.entities = action.payload;
-      }
-  })
+  //   .addCase(fetchTeam.fulfilled, (state, action) => {
+  //     state.status = 'idle';
+  //     if (action.payload.errors){
+  //         state.errorMessages = action.payload.errors;
+  //     } else{
+  //         state.errorMessages = null;
+  //         state.entities = action.payload;
+  //     }
+  // })
     .addCase(createTeam.fulfilled, (state, action) => {
         state.status = 'idle';
         if (action.payload.errors){

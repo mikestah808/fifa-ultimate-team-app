@@ -35,8 +35,6 @@ function PlayerInput({ teamId }) {
     dispatch(fetchCountries())
   },[dispatch])
 
- 
-
 
   function handleCountryChange(event){ 
     const findCountry = countries.find((country) => country.id === event.target.value)
@@ -64,14 +62,26 @@ function PlayerInput({ teamId }) {
     team_id: teamId,
     country_id: selectedCountry.id
     }
-    // debugger;
-    console.log(playerData)
+   
     event.preventDefault();
     dispatch(createPlayer(playerData))
-
     // the player object that was just added to state!!!
     dispatch(playerAddedToTeam(playerData))
-    
+
+    // setName("")
+    // setAge("")
+    // setImage("")
+    // setPosition("")
+    // setRating(0)
+    // setClub("")
+    // setPrice(0)
+    // setPace(0)
+    // setDribbling(0)
+    // setShooting(0)
+    // setDefending(0)
+    // setPassing(0)
+    // setPhysical(0)
+
   }
 
 

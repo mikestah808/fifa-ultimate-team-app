@@ -6,13 +6,17 @@ import PlayerInput from '../players/PlayerInput';
 import PlayerEdit from '../players/PlayerEdit';
 import { fetchTeam } from './teamsSlice';
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 function TeamDetails() {
   // const dispatch = useDispatch();
+  let navigate = useNavigate();
   // Get the teamId param from the URL.
   const { id } = useParams();
   const teams = useSelector((state) => state.teams.entities) 
+  const currentUser = useSelector((state) => state.users) 
+  const {user, loggedIn} = currentUser
   //use state for whether form will be ADD PLAYER OR EDIT PLAYER
   const [showAddPlayerForm, setShowAddPlayerForm] = useState(false)
   const [showEditPlayerForm, setShowEditPlayerForm] = useState(false)
@@ -35,11 +39,11 @@ function TeamDetails() {
   }
 
 
+  if(loggedIn){
 
-const renderTeamPlayers = team.players?.map((player) => {
-  return <Player key={player.id} player={player} />
-})
-
+    const renderTeamPlayers = team.players?.map((player) => {
+      return <Player key={player.id} player={player} />
+    })
 
 
   return (
@@ -55,6 +59,15 @@ const renderTeamPlayers = team.players?.map((player) => {
         <li>{renderTeamPlayers}</li>
     </div>
       )
+
+    
+  } else {
+    return (
+      navigate("/")
+    )
+  }
+
+
 }
 
 export default TeamDetails

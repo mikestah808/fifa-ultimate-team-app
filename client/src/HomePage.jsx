@@ -9,8 +9,10 @@ import { Button } from '@mui/material';
 function HomePage() {
   // const dispatch = useDispatch();
   // let navigate = useNavigate();
-  const currentUser = useSelector((state) => state.users.user) 
+  // const currentUser = useSelector((state) => state.users.user) 
   // const usersTeams = useSelector((state) => state.users.user.teams) 
+  const currentUser = useSelector((state) => state.users) 
+  const {user, loggedIn} = currentUser 
 
   const [fact, setFact] = useState("Soccer is the most popular game in the world. In many countries it is known as 'football'")
 
@@ -23,9 +25,9 @@ function HomePage() {
     setFact(soccerFacts[Math.floor(Math.random()*soccerFacts.length)])
   }
 
+  //currentUser.error !== "Not authorized" && currentUser !== true
 
-
-    if(currentUser.error !== "Not authorized" && currentUser !== true){
+    if(loggedIn){
       return (
         <div>
           <h1>History of Football</h1>

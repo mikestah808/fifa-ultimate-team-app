@@ -13,24 +13,23 @@ import { logout } from './features/users/usersSlice';
 
 function NavBar() {
     const dispatch = useDispatch();
-    const currentUser = useSelector((state) => state.users.user)
+    // const currentUser = useSelector((state) => state.users.user)
+    const currentUser = useSelector((state) => state.users) 
+    const {user, loggedIn} = currentUser 
     let navigate = useNavigate();
 
 
     function handleLogoutClick(){
-        // debugger;
-        // fetch(`/logout`, {
-        //     method: "DELETE",
-        //     headers: {
-        //       "Content-type": "application/json"
-        //     }
-        //   })
-            dispatch(logout())
-            // navigate("/login")
-            console.log("log me out!")
+      // debugger;
+      dispatch(logout())
+      //why doesn't the path redirect to "/login" ? it does not work...
+      navigate("/")
+      console.log("log me out!")
     }
 
-    if(currentUser !== {} && currentUser !== undefined && currentUser.error !== 'Not authorized' && currentUser !== true){
+    //currentUser !== {} && currentUser !== undefined && currentUser.error !== 'Not authorized' && currentUser !== true
+
+    if(loggedIn){
         return (
             <Box sx={{ flexGrow: 1 }}>
               <AppBar position="static">
@@ -45,7 +44,7 @@ function NavBar() {
                     <MenuIcon />
                   </IconButton>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Welcome {currentUser.first_name}!
+                    Welcome {user.first_name}!
                   </Typography>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Ultimate Team
@@ -75,7 +74,7 @@ function NavBar() {
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Ultimate Team
                   </Typography>
-                  <Button color="inherit" to="/login" component={ Link }>Login</Button>
+                  <Button color="inherit" to="/" component={ Link }>Login</Button>
                   <Button color="inherit" to="/signup" component={ Link }>Signup</Button>
                 </Toolbar>
               </AppBar>

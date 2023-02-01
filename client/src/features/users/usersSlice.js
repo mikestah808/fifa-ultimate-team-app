@@ -45,7 +45,8 @@ export const logout = createAsyncThunk("user/logoutUser", () => {
 const usersSlice = createSlice({
   name: "users",
   initialState: {
-    user: {}, // user object 
+    user: {},
+    loggedIn: false, // user object 
     status: "idle", // loading state
   },
 
@@ -59,6 +60,7 @@ const usersSlice = createSlice({
         } else{
             state.errorMessages = null;
             state.user = action.payload;
+            state.loggedIn = true;
         }
     })
     .addCase(fetchUser.fulfilled, (state, action) => {
@@ -68,6 +70,13 @@ const usersSlice = createSlice({
         } else{
             state.errorMessages = null;
             state.user = action.payload;
+            //write conditional that shows whether a user exists, else set state.loggedIn = false 
+            if(!action.payload.error){
+                state.loggedIn = true
+            } else {
+                state.loggedIn = false
+            } 
+
         }
     })
     .addCase(logout.fulfilled, (state, action) => {
@@ -76,7 +85,9 @@ const usersSlice = createSlice({
             state.errorMessages = action.payload.errors;
         } else{
             state.errorMessages = null;
-            state.user = action.payload;
+            // state.user = action.payload;
+            state.user = {}
+            state.loggedIn = false;
         }
     })
     .addCase(login.fulfilled, (state, action) => {
@@ -86,6 +97,7 @@ const usersSlice = createSlice({
         } else{
             state.errorMessages = null;
             state.user = action.payload;
+            state.loggedIn = true;
         }
     })
   }
