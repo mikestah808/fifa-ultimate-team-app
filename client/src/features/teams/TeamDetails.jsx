@@ -21,6 +21,7 @@ function TeamDetails() {
   const [team, setTeam] = useState({name: ""})
 
   useEffect(() => {
+    // debugger;
     const findTeam = teams?.find((team) => team.id === parseInt(id))
     if(findTeam){
       setTeam(findTeam)

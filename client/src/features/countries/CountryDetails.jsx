@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import Player from '../players/Player';
+// import Player from '../players/Player';
+import CountryPlayer from './CountryPlayer'
 import { useNavigate } from 'react-router-dom';
 
 
@@ -27,7 +28,7 @@ useEffect(() => {
 if(loggedIn){
 
   const renderCountriesPlayers = selectedCountry.players.map((player) => {
-    return <Player key={player.id} player={player} />
+    return <CountryPlayer key={player.id} player={player} />
   })
 
   return (
