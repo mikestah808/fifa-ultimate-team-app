@@ -27,6 +27,7 @@ function CountryInput() {
     event.preventDefault();
     dispatch(addCountry(countryForm))
     setName("")
+    setImage("")
   }
 
   return (

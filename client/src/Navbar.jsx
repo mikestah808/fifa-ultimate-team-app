@@ -13,7 +13,6 @@ import { logout } from './features/users/usersSlice';
 
 function NavBar() {
     const dispatch = useDispatch();
-    // const currentUser = useSelector((state) => state.users.user)
     const currentUser = useSelector((state) => state.users) 
     const {user, loggedIn} = currentUser 
     let navigate = useNavigate();
@@ -27,7 +26,6 @@ function NavBar() {
       console.log("log me out!")
     }
 
-    //currentUser !== {} && currentUser !== undefined && currentUser.error !== 'Not authorized' && currentUser !== true
 
     if(loggedIn){
         return (

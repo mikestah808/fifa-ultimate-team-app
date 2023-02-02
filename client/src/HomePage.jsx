@@ -1,16 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
-// import { fetchUser } from './features/sessions/sessionsSlice';
+import React, { useState } from 'react'
+import { useSelector } from "react-redux";
 import Login from './authentication/Login';
 import { Button } from '@mui/material';
-// import TeamsContainer from './features/teams/TeamsContainer'
 
 function HomePage() {
-  // const dispatch = useDispatch();
-  // let navigate = useNavigate();
-  // const currentUser = useSelector((state) => state.users.user) 
-  // const usersTeams = useSelector((state) => state.users.user.teams) 
+  
   const currentUser = useSelector((state) => state.users) 
   const {user, loggedIn} = currentUser 
 
@@ -21,7 +15,6 @@ function HomePage() {
 
   //create function that will spit out a random element from soccerFacts array 
   function randomFact(){
-    // console.log(soccerFacts[Math.floor(Math.random()*soccerFacts.length)])
     setFact(soccerFacts[Math.floor(Math.random()*soccerFacts.length)])
   }
 

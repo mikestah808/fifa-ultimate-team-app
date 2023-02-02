@@ -35,11 +35,9 @@ function Player({ player }) {
 
   return (
     <div className="container">
-{/* <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" style="width:100%"/> */}
 <div className="rcorners2">
   <h4>{name}</h4>
   <h4>Position: {position}</h4>
-  {/* <p>Age: {age}</p> */}
   <h4>Club: {club}</h4>
   <img src={image_url}/>
   <p>Pace: {pace}</p>

@@ -16,8 +16,6 @@ function CountryDropDown({ handleCountryChange, countries, selectedCountry }) {
     })
 
 
-    //   console.log("selected country", selectedCountry.id)
-
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>

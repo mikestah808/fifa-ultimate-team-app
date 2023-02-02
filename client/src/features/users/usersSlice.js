@@ -15,6 +15,13 @@ export const signup = createAsyncThunk("user/createUser", ({first_name, last_nam
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify({first_name, last_name, email, password})
         })
+        // .then((response) => {
+        //     if (response.ok) {
+        //       response.json().then((user) => console.log(user));
+        //     } else {
+        //       response.json().then((errorData) => console.log(errorData));
+        //     }
+        //   })
         .then((resp) => resp.json())
         .then((user) => user)
 })

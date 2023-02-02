@@ -35,7 +35,6 @@ function App() {
         <NavBar />
         <Routes>
           <Route exact path="/" element={ <HomePage /> } />
-          {/* <Route exact path="/login" element={ <Login /> } /> */}
           <Route exact path="/signup" element={ <Signup /> } />
           <Route exact path="/countries" element={ <CountriesContainer /> } />
           <Route exact path="/teams" element={ <TeamsContainer /> } />

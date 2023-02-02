@@ -28,7 +28,7 @@ function Login() {
           dispatch(login(userData))
           navigate("/")
         } else {
-          console.log("Invalid email or password!")
+          setError("Email or Password Can't Be Blank")
           setEmail("")
           setPassword("")
         }

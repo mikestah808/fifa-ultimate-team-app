@@ -1,15 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { userAdded } from "../features/users/usersSlice";
-// import { useSelector } from "react-redux";
 import { signup } from "../features/users/usersSlice";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 function Signup() {
-  let navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const errorMessages = useSelector((state) => state.users.errorMessages) 
   
   const [user, setUser] = useState({
     first_name: "",
@@ -27,17 +24,14 @@ function Signup() {
 
   function createNewUser(e){
     e.preventDefault()
-    if(user.first_name !== "" && user.last_name !== "" && user.email !== "" && user.password !== ""){
-      dispatch(signup(user))
-      navigate("/")
-      console.log(user)
-    } else {
-      console.log("You're missing something!") 
-    }
+    dispatch(signup(user))
   }
+
+  const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)
 
   return (
     <div>
+      <h1>Create Account!</h1>
       <form onSubmit={createNewUser}>
         Create Account!
         <br />
@@ -57,6 +51,7 @@ function Signup() {
           <br />
         <button type="submit">Sign up</button>
       </form>
+      {renderErrorMessages}
     </div>
   );
 }

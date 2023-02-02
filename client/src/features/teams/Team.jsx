@@ -20,7 +20,6 @@ function Team({ team }) {
         <h4>{team.name}</h4>
         <Button component={ Link } to={`${team.id}`}>View Team</Button>
         <Button onClick={handleDeleteClick}> Delete Team </Button>
-        {/* <ReviewsContainer restaurantId = {restaurant.id}/> */}
       </li>
     </div>
   );

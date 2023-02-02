@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Player from '../players/Player';
 import PlayerInput from '../players/PlayerInput';
 import PlayerEdit from '../players/PlayerEdit';
-import { fetchTeam } from './teamsSlice';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 
 function TeamDetails() {
-  // const dispatch = useDispatch();
   let navigate = useNavigate();
   // Get the teamId param from the URL.
   const { id } = useParams();
@@ -48,7 +46,6 @@ function TeamDetails() {
 
   return (
     <div>
-        {/* <PlayerInput teamId={id}/> */}
         <h1>Team: {team.name}</h1>
         <br />
         <h1>PLAYERS</h1>
