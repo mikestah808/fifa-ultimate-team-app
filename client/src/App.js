@@ -12,6 +12,7 @@ import { fetchUser } from './features/users/usersSlice'
 import TeamsContainer from './features/teams/TeamsContainer'
 import CountryDetails from './features/countries/CountryDetails'
 import { fetchTeams } from './features/teams/teamsSlice'
+import { fetchCountries } from './features/countries/countriesSlice'
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
     } else {
       dispatch(fetchUser(currentUser))
       dispatch(fetchTeams())
+      dispatch(fetchCountries())
+      
     }
   }, [])
 

@@ -3,7 +3,7 @@ import CountryDropDown from "../countries/CountryDropDown";
 import { useSelector } from 'react-redux'
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { createPlayer } from "./playersSlice";
+import { createPlayer } from "../teams/teamsSlice";
 import { fetchCountries } from "../countries/countriesSlice";
 import { useEffect } from "react";
 import { playerAddedToTeam } from "../teams/teamsSlice";
@@ -66,7 +66,7 @@ function PlayerInput({ teamId }) {
     event.preventDefault();
     dispatch(createPlayer(playerData))
     // the player object that was just added to state!!!
-    dispatch(playerAddedToTeam(playerData))
+    // dispatch(playerAddedToTeam(playerData))
 
     // setName("")
     // setAge("")

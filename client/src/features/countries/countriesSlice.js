@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export const fetchCountries = createAsyncThunk("countries/fetchCountries", () => {
+export const fetchCountries = createAsyncThunk("country/fetchCountries", () => {
   // return a Promise containing the data we want
   return fetch("/countries")
     .then((response) => response.json())
@@ -8,7 +8,7 @@ export const fetchCountries = createAsyncThunk("countries/fetchCountries", () =>
 });
 
 
-export const addCountry = createAsyncThunk("user/addCountry", ({name, image_url}) => {
+export const addCountry = createAsyncThunk("country/addCountry", ({name, image_url}) => {
   // return a Promise containing the data we want
   return fetch("/countries", {
       method: "POST",
@@ -19,7 +19,7 @@ export const addCountry = createAsyncThunk("user/addCountry", ({name, image_url}
       .then((countries) => countries)
 })
 
-export const deleteCountry = createAsyncThunk("user/deleteTeam", (id) => {
+export const deleteCountry = createAsyncThunk("country/deleteTeam", (id) => {
   // return a Promise containing the data we want
   return fetch(`/countries/${id}`, {
       method: "DELETE",

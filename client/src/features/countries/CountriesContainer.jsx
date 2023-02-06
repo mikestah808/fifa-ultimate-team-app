@@ -15,12 +15,6 @@ function Countries() {
 
 
 
-  useEffect(() => {
-    dispatch(fetchCountries());
-  }, [dispatch])
-
-
-
   if(loggedIn){
 
     const renderCountries = countries?.map((country) => {
@@ -36,7 +30,6 @@ function Countries() {
     )
   } else {
     return (
-      // <Login />
       navigate("/")
     )
   }

@@ -5,8 +5,8 @@ import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { fetchCountries } from "../countries/countriesSlice";
 import { useEffect } from "react";
-import { updatePlayer } from "./playersSlice";
-import { playerUpdated } from "../teams/teamsSlice";
+import { updatePlayer } from "../teams/teamsSlice";
+// import { playerUpdated } from "../teams/teamsSlice";
 
 function PlayerEdit({ player }) {
   //useDispatch hook from react 
@@ -74,7 +74,7 @@ function PlayerEdit({ player }) {
     dispatch(updatePlayer(playerData))
 
     // the player object that was just updated to state!!!
-    dispatch(playerUpdated(playerData))
+    // dispatch(playerUpdated(playerData))
     
   }
 

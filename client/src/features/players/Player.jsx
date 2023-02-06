@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux"
 import { Button } from "@mui/material";
-import { deletePlayer } from "./playersSlice";
+import { deletePlayer } from "../teams/teamsSlice";
 import { playerRemovedFromTeam } from "../teams/teamsSlice";
 import { useState } from "react";
 import PlayerEdit from "./PlayerEdit";
@@ -29,8 +29,8 @@ function Player({ player }) {
       team_id: team_id
     }
 
-    dispatch(deletePlayer(id))
-    dispatch(playerRemovedFromTeam(playerData))
+    dispatch(deletePlayer(playerData))
+    // dispatch(playerRemovedFromTeam(playerData))
   }
 
   return (

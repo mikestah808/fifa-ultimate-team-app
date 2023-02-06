@@ -56,6 +56,18 @@ const usersSlice = createSlice({
     loggedIn: false, // user object 
     status: "idle", // loading state
   },
+  // reducers: {
+    
+  //   teamAddedToUser(state, action) {
+  //   //   debugger;
+  //     state.user.teams.push(action.payload)
+  //   },
+  //   teamRemovedFromUser(state, action) {
+  //   //   debugger;
+  //     const index = state.user.teams.findIndex((team) => team.id === action.payload.id)
+  //     state.user.teams.splice(index, 1)
+  //   },
+  // },
 
   extraReducers: (builder) => { 
     // handle async actions: pending, fulfilled, rejected (for errors)
@@ -110,6 +122,6 @@ const usersSlice = createSlice({
   }
 });
 
-// export const { login } = usersSlice.actions;
+// export const { teamAddedToUser, teamRemovedFromUser } = usersSlice.actions;
 
 export default usersSlice.reducer;

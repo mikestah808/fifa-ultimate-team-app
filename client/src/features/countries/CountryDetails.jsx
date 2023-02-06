@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
-// import Player from '../players/Player';
 import CountryPlayer from './CountryPlayer'
 import { useNavigate } from 'react-router-dom';
 
@@ -12,28 +11,19 @@ function CountryDetails() {
   let navigate = useNavigate();
   const currentUser = useSelector((state) => state.users) 
   const {user, loggedIn} = currentUser
-  // const countries = useSelector((state) => state.countries.entities) 
+  const countries = useSelector((state) => state.countries.entities) 
+  const findCountry = countries.find((country) => country.id === parseInt(id))
 
-  const [selectedCountry, setSelectedCountry] = useState({
-    players: []
-  })
-
-
-useEffect(() => {
-  fetch(`/countries/${id}`)
-  .then((resp) => resp.json())
-  .then((country) => setSelectedCountry(country))
-},[])
 
 if(loggedIn){
 
-  const renderCountriesPlayers = selectedCountry.players.map((player) => {
+  const renderCountriesPlayers = findCountry.players.map((player) => {
     return <CountryPlayer key={player.id} player={player} />
   })
 
   return (
     <div>
-        <h1>Country: {selectedCountry.name}</h1>
+        <h1>Country: {findCountry.name}</h1>
         <br />
         <h1>Players</h1>
         <li>{renderCountriesPlayers}</li>

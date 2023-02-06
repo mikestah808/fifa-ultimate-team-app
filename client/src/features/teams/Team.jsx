@@ -3,13 +3,27 @@ import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom';
 import { Button } from "@mui/material";
 import { deleteTeam } from "./teamsSlice";
+import { useSelector } from "react-redux";
+// import { teamRemovedFromUser } from "../users/usersSlice";
 
 function Team({ team }) {
   const dispatch = useDispatch();
+  // const currentUser = useSelector((state) => state.users) 
+  const {id, user_id, name, players } = team
+
   
 
   function handleDeleteClick(){
+
+    const teamData = {
+      id: id,
+      user_id: user_id,
+      name: name,
+      players: players
+    }
+
     dispatch(deleteTeam(team.id))
+    // dispatch(teamRemovedFromUser(teamData))
   }
 
 
