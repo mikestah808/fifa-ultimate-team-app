@@ -27,8 +27,8 @@ function TeamsContainer() {
 
     return (
       <div>
-        <TeamInput/>
         {renderTeams}
+        <TeamInput/>
       </div>
     )
   } else {

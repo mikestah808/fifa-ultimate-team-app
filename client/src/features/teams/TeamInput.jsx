@@ -6,6 +6,7 @@ function TeamInput() {
   //we are using this in order to grab the users id because we must pass it to our dispatch action to match the user_id with the action.payload.id when team is being added and removed to user
   // const user = useSelector((state) => state.users.user) 
   const teams = useSelector((state) => state.teams.entities) 
+  const errorMessages = useSelector((state) => state.teams.errorMessages) 
   const [name, setName] = useState("")
   const dispatch = useDispatch();
 
@@ -27,13 +28,20 @@ function TeamInput() {
     setName("")
   }
 
+  const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)
+
+
+
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit}>
       <label>name
       <input onChange={handleChange} value={name}/> 
       </label>
       <button type="submit">add team</button>
     </form>
+      {renderErrorMessages}
+    </div>
   )
 }
 

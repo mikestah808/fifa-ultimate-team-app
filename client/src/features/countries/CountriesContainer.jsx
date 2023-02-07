@@ -12,6 +12,10 @@ function Countries() {
   const currentUser = useSelector((state) => state.users) 
   const {user, loggedIn} = currentUser 
 
+  useEffect(() =>{
+    dispatch(fetchCountries())
+  }, [])
+
 
 
 

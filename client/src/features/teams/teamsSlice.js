@@ -69,47 +69,6 @@ const teamsSlice = createSlice({
     entities: [], // array of teams
     status: "idle", // loading state
   },
-  // reducers: {
-    
-    // playerAddedToTeam(state, action) {
-      // debugger;
-      // state.entities.push(action.payload)
-      //find the team using .find and return the team that is equal to the action.payload.team_id
-      // const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
-      //after finding the team, you want to push the player object into the array of findTeam 
-      // findTeam.players.push(action.payload)
-    // },
-  //   playerUpdated(state, action) {
-  //     // debugger;
-  //     //find the team using .find and return the team that is equal to the action.payload.team_id
-  //     const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
-  //     //now find the player by using .find on findTeam object 
-  //     const player = findTeam.players.find((player) => player.id === action.payload.id);
-  //     player.country_id = action.payload.country_id
-  //     player.name = action.payload.name
-  //     player.age = action.payload.age
-  //     player.image_url = action.payload.image_url
-  //     player.position = action.payload.position
-  //     player.rating = action.payload.rating
-  //     player.club = action.payload.club
-  //     player.price = action.payload.price
-  //     player.pace = action.payload.pace
-  //     player.dribbling = action.payload.dribbling
-  //     player.shooting = action.payload.shooting
-  //     player.defending = action.payload.defending
-  //     player.passing = action.payload.passing
-  //     player.physical = action.payload.physical
-  //     //after you find the player that matches the action.payload.id, you want to replace the player with the action.payload (updatedPlayer)
-  //   },
-  //   playerRemovedFromTeam(state, action) {
-  //     // debugger;
-
-  //     const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
-  //     // const findTeam = state.entities.find((team) => team.id !== action.payload.team_id)
-  //     const index = findTeam.players.findIndex((player) => player.id === action.payload.id)
-  //     findTeam.players.splice(index, 1)
-  //   },
-  // },
   extraReducers: (builder) => { 
     // handle async actions: pending, fulfilled, rejected (for errors)
     builder
@@ -201,6 +160,6 @@ const teamsSlice = createSlice({
   }
 });
 
-export const { playerAddedToTeam, playerUpdated, playerRemovedFromTeam }  = teamsSlice.actions;
+// export const { playerAddedToTeam, playerUpdated, playerRemovedFromTeam }  = teamsSlice.actions;
 
 export default teamsSlice.reducer;
