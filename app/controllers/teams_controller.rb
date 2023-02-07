@@ -6,7 +6,6 @@ class TeamsController < ApplicationController
   def index
     user = User.find_by(id: session[:user_id])
     teams = user.teams
-    # teams = Team.all
     render json: teams
   end
 
@@ -29,14 +28,6 @@ class TeamsController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     render json: { errors: e.record.errors.full_messages }, status: :unprocessable_entity
   end
-
-  # # PATCH/PUT /teams/1
-  # def update
-  #   user = User.find_by(id: session[:user_id])
-  #   team = user.teams.find_by(id: params[:id])
-  #   team.update(team_params)
-  #   render json: team
-  # end
 
   # DELETE /teams/1
   def destroy

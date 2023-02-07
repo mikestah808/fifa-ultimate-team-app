@@ -71,6 +71,20 @@ function PlayerEdit({ player }) {
     console.log(playerData)
     event.preventDefault();
     dispatch(updatePlayer(playerData))
+
+    setEditName("")
+    setEditAge("")
+    setEditImage("")
+    setEditPosition("")
+    setEditRating(0)
+    setEditClub("")
+    setEditPrice(0)
+    setEditPace(0)
+    setEditDribbling(0)
+    setEditShooting(0)
+    setEditDefending(0)
+    setEditPassing(0)
+    setEditPhysical(0)
   }
 
 

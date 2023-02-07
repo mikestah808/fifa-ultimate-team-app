@@ -17,10 +17,6 @@ function TeamsContainer() {
 
   if(loggedIn){
 
-    // const renderTeams = user.teams.map((team) => {
-    //   return <Team key={team.id} team={team} />
-    // })
-
     const renderTeams = userTeams.map((team) => {
       return <Team key={team.id} team={team} />
     })

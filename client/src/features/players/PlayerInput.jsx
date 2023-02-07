@@ -6,13 +6,13 @@ import { useDispatch } from "react-redux";
 import { createPlayer } from "../teams/teamsSlice";
 import { fetchCountries } from "../countries/countriesSlice";
 import { useEffect } from "react";
-import { playerAddedToTeam } from "../teams/teamsSlice";
 
 function PlayerInput({ teamId }) {
   //useDispatch hook from react 
   let dispatch = useDispatch();
   //useSelector hook to get countries state
   const countries = useSelector((state) => state.countries.entities)
+  const errorMessages = useSelector((state) => state.teams.errorMessages)
   const [selectedCountry, setSelectedCountry] = useState({})
 
   //component state for playerData
@@ -65,24 +65,23 @@ function PlayerInput({ teamId }) {
    
     event.preventDefault();
     dispatch(createPlayer(playerData))
-    // the player object that was just added to state!!!
-    // dispatch(playerAddedToTeam(playerData))
-
-    // setName("")
-    // setAge("")
-    // setImage("")
-    // setPosition("")
-    // setRating(0)
-    // setClub("")
-    // setPrice(0)
-    // setPace(0)
-    // setDribbling(0)
-    // setShooting(0)
-    // setDefending(0)
-    // setPassing(0)
-    // setPhysical(0)
-
+   
+    setName("")
+    setAge("")
+    setImage("")
+    setPosition("")
+    setRating(0)
+    setClub("")
+    setPrice(0)
+    setPace(0)
+    setDribbling(0)
+    setShooting(0)
+    setDefending(0)
+    setPassing(0)
+    setPhysical(0)
   }
+
+  const renderErrorMessages = errorMessages?.map((error) => <h4>Error! {error}</h4>)
 
 
   return (
@@ -142,6 +141,7 @@ function PlayerInput({ teamId }) {
       </label>
       <br />
       <Button type="submit">add player</Button>
+      {renderErrorMessages}
     </form>
     </>
   )
