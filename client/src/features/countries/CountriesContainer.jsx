@@ -26,11 +26,21 @@ function Countries() {
     })
 
     return (
-      <div>
+      <>
+      <br />
+      <br />
+      <div className='countrypage'>
+      <h4>Add Country</h4>
       <CountryInput />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <h1>Countries</h1>
       {renderCountries}
     </div>
+    </>
     )
   } else {
     return (

@@ -19,7 +19,7 @@ h1, h4, p, li {
   margin: auto;
 }
 
-.homepage {
+.homepage, .countrypage, .teampage, .teamdetails {
   text-align: center;
   /* display: flexbox; */
 }
@@ -71,7 +71,7 @@ label {
 
 img {
   /* display: flex; */
-  height: 300px;
+  height: 280px;
   width: 250px;
 }
 

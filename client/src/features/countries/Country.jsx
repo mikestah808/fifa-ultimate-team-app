@@ -17,8 +17,8 @@ function Team({ country }) {
     <div>
       <li>
         <h4>{country.name}</h4>
-        <Button component={ Link } to={`${country.id}`}>View Country</Button>
-        <Button onClick={handleDeleteClick}> Delete Country </Button>
+        <Button sx={{ color: 'white' }} component={ Link } to={`${country.id}`}>View Country</Button>
+        <Button sx={{ color: 'white' }} onClick={handleDeleteClick}> Delete Country </Button>
       </li>
     </div>
   );

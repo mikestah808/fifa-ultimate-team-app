@@ -35,10 +35,10 @@ function TeamInput() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-      <label>name
+      <label>Name
       <input onChange={handleChange} value={name}/> 
       </label>
-      <button type="submit">add team</button>
+      <button type="submit">Add Team</button>
     </form>
       {renderErrorMessages}
     </div>

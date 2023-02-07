@@ -45,8 +45,9 @@ function Player({ player }) {
   <p>Defending: {defending}</p>
   <p>Passing: {passing}</p>
   <p>Physical: {physical}</p>
-  <Button onClick={handleEditClick}>Edit</Button>
-  <Button onClick={handleDeleteClick}>Delete</Button>
+  {/* <Button onClick={handleEditClick}>Edit</Button> */}
+  <Button sx={{ color: 'white' }} onClick={handleEditClick}>Edit</Button>
+  <Button sx={{ color: 'white' }} onClick={handleDeleteClick}>Delete</Button>
   {showForm ? <PlayerEdit player={player} />: null}
 </div>
 </div>

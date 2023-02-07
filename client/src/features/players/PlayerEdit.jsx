@@ -144,7 +144,7 @@ function PlayerEdit({ player }) {
       <input name="physical" type="number" onChange={(event) => setEditPhysical(event.target.value)} value={editPhysical}/>
       </label>
       <br />
-      <Button type="submit">edit player</Button>
+      <Button type="submit" sx={{ color: 'white' }}>edit player</Button>
     </form>
     </>
   )

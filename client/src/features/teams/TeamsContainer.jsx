@@ -22,9 +22,17 @@ function TeamsContainer() {
     })
 
     return (
-      <div>
-        {renderTeams}
+      <div className="teampage">
+        <br />
+        <br />
+        <h4>Add Team</h4>
         <TeamInput/>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        {renderTeams}
       </div>
     )
   } else {
