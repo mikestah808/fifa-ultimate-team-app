@@ -31,7 +31,7 @@ function NavBar() {
               <AppBar position="static">
                 <Toolbar>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Welcome {user.first_name}!
+                    Welcome, {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}!
                   </Typography>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Ultimate Team

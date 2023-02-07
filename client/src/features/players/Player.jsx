@@ -10,7 +10,7 @@ function Player({ player }) {
   const dispatch = useDispatch();
   const [showForm, setShowForm] = useState(false)
 
-  const {name, id, position, age, club, pace, dribbling, shooting, defending, passing, physical, image_url, team_id } = player
+  const {name, id, position, club, pace, dribbling, shooting, defending, passing, physical, image_url, team_id } = player
 
   function handleEditClick(){
     console.log(player)
@@ -30,7 +30,6 @@ function Player({ player }) {
     }
 
     dispatch(deletePlayer(playerData))
-    // dispatch(playerRemovedFromTeam(playerData))
   }
 
   return (
