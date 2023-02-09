@@ -81,7 +81,7 @@ function PlayerInput({ teamId }) {
     setPhysical(0)
   }
 
-  const renderErrorMessages = errorMessages?.map((error) => <h4>Error! {error}</h4>)
+  const renderErrorMessages = errorMessages?.map((error) => <h6>Error! {error}</h6>)
 
 
   return (

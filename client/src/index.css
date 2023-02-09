@@ -19,6 +19,14 @@ h1, h4, p, li {
   margin: auto;
 }
 
+label {
+  color: black;
+}
+
+.countryflag {
+  height: auto;
+}
+
 .homepage, .countrypage, .teampage, .teamdetails, .login {
   text-align: center;
   /* display: flexbox; */
@@ -31,7 +39,7 @@ h1, h4, p, li {
 
 
 .title {
-  color: #eee;
+  color: white;
   font-family: sans-serif;
   font-size: 36px;
   font-weight: 600;
@@ -45,7 +53,7 @@ label {
 }
 
 .form {
-  background-color: #15172b;
+  background-color: grey;
   border-radius: 20px;
   box-sizing: border-box;
   height: 500px;

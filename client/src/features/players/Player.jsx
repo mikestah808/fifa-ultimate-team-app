@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux"
 import { Button } from "@mui/material";
 import { deletePlayer } from "../teams/teamsSlice";
-import { playerRemovedFromTeam } from "../teams/teamsSlice";
 import { useState } from "react";
 import PlayerEdit from "./PlayerEdit";
 
@@ -32,9 +31,21 @@ function Player({ player }) {
     dispatch(deletePlayer(playerData))
   }
 
+//   How do we do this???
+
+// We need to have an onClick event handler for the edit button 
+// A function needs to be chained to the event handler 
+
+// The function will consist of a setter function from useState where the state will change from false —> true 
+// We will have create a ternary with state on whether the form state is true 
+// If true, then render a edit form component… else there is no edit form component 
+
+// The edit form component MUST have access to the players state that was clicked on 
+
   return (
-    <div className="container">
-<div className="rcorners2">
+  <div className="row">
+  <div className="column">
+  <div className="rcorners2">
   <h4>{name}</h4>
   <h4>Position: {position}</h4>
   <h4>Club: {club}</h4>
@@ -48,7 +59,8 @@ function Player({ player }) {
   {/* <Button onClick={handleEditClick}>Edit</Button> */}
   <Button sx={{ color: 'white' }} onClick={handleEditClick}>Edit</Button>
   <Button sx={{ color: 'white' }} onClick={handleDeleteClick}>Delete</Button>
-  {showForm ? <PlayerEdit player={player} />: null}
+</div>
+{showForm ? <PlayerEdit player={player} />: null}
 </div>
 </div>
   )
