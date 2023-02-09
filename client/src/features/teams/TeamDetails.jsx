@@ -11,11 +11,11 @@ function TeamDetails() {
   let navigate = useNavigate();
   // Get the teamId param from the URL.
   const { id } = useParams();
+  const currentUser = useSelector((state) => state.users) 
   const teams = useSelector((state) => state.teams.entities) 
-  // const {user, loggedIn} = currentUser
+  const {user, loggedIn} = currentUser
   //use state for whether form will be ADD PLAYER OR EDIT PLAYER
   const [showAddPlayerForm, setShowAddPlayerForm] = useState(false)
-  const [showEditPlayerForm, setShowEditPlayerForm] = useState(false)
   const [team, setTeam] = useState({name: ""})
 
   useEffect(() => {
@@ -35,7 +35,7 @@ function TeamDetails() {
 
 
 
-  // if(loggedIn){
+  if(loggedIn){
 
     const renderTeamPlayers = team.players?.map((player) => {
       return <Player key={player.id} player={player} />
@@ -56,11 +56,11 @@ function TeamDetails() {
       )
 
     
-//   } else {
-//     return (
-//       navigate("/")
-//     )
-//   }
+  } else {
+    return (
+      navigate("/")
+    )
+  }
 
 
 }

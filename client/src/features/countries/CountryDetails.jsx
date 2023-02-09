@@ -1,23 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import CountryPlayer from './CountryPlayer'
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchCountries } from './countriesSlice';
 
 
 function CountryDetails() {
   // Get the teamId param from the URL.
   const { id } = useParams();
   let navigate = useNavigate();
+  const dispatch = useDispatch();
   const currentUser = useSelector((state) => state.users) 
   const {user, loggedIn} = currentUser
   const countries = useSelector((state) => state.countries.entities) 
+  // const [country, setCountry] = useState({name: ""})
   const findCountry = countries.find((country) => country.id === parseInt(id))
 
+  useEffect(() =>{
+    dispatch(fetchCountries())
+  }, [])
 
-if(loggedIn){
 
-  const renderCountriesPlayers = findCountry.players.map((player) => {
+if(loggedIn && findCountry){
+
+  const renderCountriesPlayers = findCountry.players?.map((player) => {
     return <CountryPlayer key={player.id} player={player} />
   })
 
