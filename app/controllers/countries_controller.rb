@@ -1,6 +1,8 @@
 class CountriesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+    skip_before_action :authorized
+
     def index
         countries = Country.all
         render json: countries

@@ -28,7 +28,7 @@ This is a frontend application for a FIFA Ultimate Team App
 * Country Show Page 
 * Full CRUD Players
 * Create and Delete Teams
-* Create and Delete Countries
+* Create Countries
 
 ## Licensing (MIT)
 

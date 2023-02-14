@@ -29,6 +29,17 @@ export const deleteTeam = createAsyncThunk("team/deleteTeam", (id) => {
       .then((resp) => resp.ok)
   })
 
+  // export const teamsLogout = createAsyncThunk("team/teamsLogout", () => {
+  //   // return a Promise containing the data we want
+  //   return fetch("/teamslogout", {
+  //       method: "DELETE",
+  //       headers: {
+  //         "Content-type": "application/json"
+  //       }
+  //     })
+  //       .then((resp) => resp.ok)
+  //   })
+
   export const createPlayer = createAsyncThunk("player/createPlayer", (name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id) => {
     // return a Promise containing the data we want
     return fetch("/players", {
@@ -91,15 +102,27 @@ const teamsSlice = createSlice({
         }
     })
     .addCase(deleteTeam.fulfilled, (state, action) => {
+      // debugger;
       state.status = 'idle';
       if (action.payload.errors){
           state.errorMessages = action.payload.errors;
       } else{
           state.errorMessages = null;
-          const index = state.entities.findIndex((team) => team.id === action.payload)
+          const index = state.entities.findIndex((team) => team.id === action.meta.arg)
           state.entities.splice(index, 1)
       }
   })
+//   .addCase(logout.fulfilled, (state, action) => {
+//     state.status = 'idle';
+//     if (action.payload.errors){
+//         state.errorMessages = action.payload.errors;
+//     } else{
+//         state.errorMessages = null;
+//         // state.user = action.payload;
+//         state.user = {}
+//         state.loggedIn = false;
+//     }
+// })
   .addCase(createPlayer.fulfilled, (state, action) => {
       // debugger;
       console.log(action)

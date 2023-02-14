@@ -7,10 +7,13 @@ import { useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
+import { useNavigate } from "react-router-dom";
+
 
 
 function Signup() {
   const dispatch = useDispatch();
+  let navigate = useNavigate();
   const errorMessages = useSelector((state) => state.users.errorMessages) 
   
   const [user, setUser] = useState({
@@ -29,7 +32,17 @@ function Signup() {
 
   function createNewUser(e){
     e.preventDefault()
-    dispatch(signup(user))
+    if(user.first_name !== "" && user.last_name !== "" && user.email !== "" && user.password !== ""){
+      dispatch(signup(user))
+      navigate("/")
+    } else {
+      setUser({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: ""
+      })
+    }
   }
 
   const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)

@@ -6,7 +6,7 @@ import { deleteTeam } from "./teamsSlice";
 
 function Team({ team }) {
   const dispatch = useDispatch();
-  // const {id, user_id, name, players } = team
+  const {id, user_id, name, players } = team
 
   
 
@@ -19,7 +19,7 @@ function Team({ team }) {
     //   players: players
     // }
 
-    dispatch(deleteTeam(team.id))
+    dispatch(deleteTeam(id))
   }
 
 
