@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import Login from './authentication/Login';
 import { fetchTeams } from './features/teams/teamsSlice';
+
+
 function HomePage() {
   
   const currentUser = useSelector((state) => state.users) 
@@ -10,6 +12,7 @@ function HomePage() {
   const [fact, setFact] = useState("Soccer is the most popular game in the world. In many countries it is known as 'football'")
   //create an array with a variable name of soccerFacts that will contain string elements of facts about soccer 
   const soccerFacts = ["Soccer is the most popular game in the world. In many countries it is known as football","In England, soccer was formed when several clubs formed the Football Association about 150 years ago", "Women started playing soccer around the same time as men did in England. However, originally men were the main players in the game. Women’s soccer started to become extremely popular in the 1990s", "In China, the first soccer balls were made from sewn clothing that was filled with rubble. In Europe during the Middle Ages, soccer balls were made from inflated pig bladders", "Today most of the balls are made from layers of synthetic leather while the bladders inside the ball are made from latex or butyl", "An international soccer game is 90 minutes long. The 90 minutes is divided in two 45 minute halves"]
+
 
   useEffect(() =>{
     dispatch(fetchTeams())

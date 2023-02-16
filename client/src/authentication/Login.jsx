@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { login } from '../features/users/usersSlice';
+import { fetchTeams } from '../features/teams/teamsSlice';
 
 import { Box } from '@mui/system';
 import { TextField } from '@mui/material';
@@ -30,6 +31,8 @@ function Login() {
         // debugger;
         if(userData.email !== "" && userData.password !== ""){
           dispatch(login(userData))
+          //dispatch teams
+          dispatch(fetchTeams())
           navigate("/")
         } else {
           setError("Email or Password Can't Be Blank")

@@ -52,9 +52,10 @@ export const logout = createAsyncThunk("user/logoutUser", () => {
 const usersSlice = createSlice({
   name: "users",
   initialState: {
-    user: {},
+    user: {error: []},
     loggedIn: false, // user object 
     status: "idle", // loading state
+    errorMessages: []
   },
   // reducers: {
     

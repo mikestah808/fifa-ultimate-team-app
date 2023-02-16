@@ -28,7 +28,6 @@ function App() {
       dispatch(fetchUser(currentUser))
       dispatch(fetchTeams())
       dispatch(fetchCountries())
-      
     }
   }, [])
 

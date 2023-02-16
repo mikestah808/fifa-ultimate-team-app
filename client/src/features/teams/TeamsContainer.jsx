@@ -14,8 +14,6 @@ function TeamsContainer() {
   const {user, loggedIn} = currentUser 
 
 
-  // console.log(userTeams)
-
 
   if(loggedIn){
 

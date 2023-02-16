@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { signup } from "../features/users/usersSlice";
 import { useSelector } from "react-redux";
@@ -8,13 +8,19 @@ import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { fetchTeams } from "../features/teams/teamsSlice";
 
 
 
 function Signup() {
   const dispatch = useDispatch();
   let navigate = useNavigate();
+  const signupUser = useSelector((state) => state.users.user) 
   const errorMessages = useSelector((state) => state.users.errorMessages) 
+  const [errors, setErrors] = useState([])
+
+  console.log(signupUser)
+
   
   const [user, setUser] = useState({
     first_name: "",
@@ -29,23 +35,28 @@ function Signup() {
     })
   }
 
+  console.log(signupUser)
+
+useEffect(() => {
+  // debugger;
+  if(signupUser && !signupUser.error){
+    navigate("/")
+  } 
+}, [signupUser])    
+
 
   function createNewUser(e){
     e.preventDefault()
-    if(user.first_name !== "" && user.last_name !== "" && user.email !== "" && user.password !== ""){
-      dispatch(signup(user))
-      navigate("/")
-    } else {
-      setUser({
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: ""
-      })
-    }
+      // debugger;
+        dispatch(signup(user))
+        dispatch(fetchTeams())
   }
 
-  const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)
+        //must dispatch a user to the backend first IN ORDER TO GET VALIDATION ERROR MESSAGES BACK 
+        // create conditional AFTER signup user which states whether the user comes back as valid? (so without any user.errors existing)
+        const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)
+
+
 
   return (
     <div className="signup">
@@ -98,36 +109,12 @@ function Signup() {
     <br />
     <Button sx={{ color: 'white' }} type='submit' variant="outlined">Sign Up</Button>
   </Box>
-    <p>
-        {renderErrorMessages}
-    </p>
+        <p>
+            {renderErrorMessages}
+        </p>
   </div>
 )
 
-  // return (
-  //   <div className="signup">
-  //     <h1>Create Account!</h1>
-  //     <form className="rcorners2" onSubmit={createNewUser}>
-  //       <br />
-  //       <br />
-  //       <br />
-  //         <label>First Name: </label>
-  //         <input type="text" name="first_name" onChange={handleChange} value={user.first_name}/>
-  //         <br />
-  //         <label>Last Name: </label>
-  //         <input type="text" name="last_name" onChange={handleChange} value={user.last_name}/>
-  //         <br />
-  //         <label>Email: </label>
-  //         <input type="text" name="email" onChange={handleChange} value={user.email}/>
-  //         <br />
-  //         <label>Password: </label>
-  //         <input type="password" name="password" onChange={handleChange} value={user.password}/>
-  //         <br />
-  //         <Button sx={{ color: 'white' }} type='submit' variant="outlined">Sign Up</Button>
-  //     </form>
-  //     {renderErrorMessages}
-  //   </div>
-  // );
 }
 
 export default Signup

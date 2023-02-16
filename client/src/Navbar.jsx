@@ -19,6 +19,8 @@ function NavBar() {
     function handleLogoutClick(){
       // debugger;
       dispatch(logout())
+      //dispatch erase teams to the teamsSlice 
+      //create reducer function that will clear the teams state.entities = []
       //why doesn't the path redirect to "/login" ? it does not work...
       navigate("/")
       console.log("log me out!")

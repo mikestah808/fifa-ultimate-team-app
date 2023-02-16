@@ -15,28 +15,49 @@ function CountryDetails() {
   const currentUser = useSelector((state) => state.users) 
   const {user, loggedIn} = currentUser
   const countries = useSelector((state) => state.countries.entities) 
-  // const [country, setCountry] = useState({name: ""})
-  const findCountry = countries.find((country) => country.id === parseInt(id))
 
-  useEffect(() =>{
-    dispatch(fetchCountries())
-  }, [])
+  const [country, setCountry] = useState({name: ""})
+  // const findCountry = countries.find((country) => country.id === parseInt(id))
 
+  // useEffect(() =>{
+  //   dispatch(fetchCountries())
+  // }, [])
 
-if(loggedIn && findCountry){
+  useEffect(() => {
+    const findCountry = countries.find((country) => country.id === parseInt(id))
+    if(findCountry){
+      setCountry(findCountry)
+    }
+  }, [countries])
 
-  const renderCountriesPlayers = findCountry.players?.map((player) => {
+  // if(loggedIn && findCountry)
+if(loggedIn){
+
+  // const renderCountriesPlayers = findCountry.players?.map((player) => {
+  //   return <CountryPlayer key={player.id} player={player} />
+  // })
+
+  const renderCountriesPlayers = country.players?.map((player) => {
     return <CountryPlayer key={player.id} player={player} />
   })
 
-  return (
-    <div>
-        <h1>Country: {findCountry.name}</h1>
-        <br />
-        <h1>Players</h1>
-        <li>{renderCountriesPlayers}</li>
-    </div>
-      )
+  // return (
+  //   <div>
+  //       <h1>Country: {findCountry.name}</h1>
+  //       <br />
+  //       <h1>Players</h1>
+  //       <li>{renderCountriesPlayers}</li>
+  //   </div>
+  //     )
+
+      return (
+        <div>
+            <h1>Country: {country.name}</h1>
+            <br />
+            <h1>Players</h1>
+            <li>{renderCountriesPlayers}</li>
+        </div>
+          )
 
 } else {
   return (
