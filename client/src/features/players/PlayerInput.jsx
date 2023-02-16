@@ -86,6 +86,7 @@ function PlayerInput({ teamId }) {
 
   return (
     <>
+    {renderErrorMessages}
     <form className="form" onSubmit={handleSubmit}>
       <div class="title">Add Player</div>
       <CountryDropDown handleCountryChange={handleCountryChange} countries={countries} selectedCountry={selectedCountry}/>
@@ -141,7 +142,7 @@ function PlayerInput({ teamId }) {
       </label>
       <br />
       <Button type="submit">add player</Button>
-      {renderErrorMessages}
+      {/* {renderErrorMessages} */}
     </form>
     </>
   )
