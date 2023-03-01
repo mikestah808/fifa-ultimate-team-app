@@ -16,6 +16,10 @@ Run rails db:migrate db:seed
 run rails s 
 If you haven't already, follow directions from frontend README.md
 
+### Video Demo Link
+
+https://youtu.be/hXOcEtLCTVk
+
 ### Licensing (MIT)
 
 Copyright (c) 2022
