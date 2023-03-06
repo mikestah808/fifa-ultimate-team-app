@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,8 +8,6 @@ import Select from '@mui/material/Select';
 
 function CountryDropDown({ handleCountryChange, countries, selectedCountry }) {
     
-    //find a way to display ALL countries as MenuItem components
-    //grab state of countries array and map through them by importing state from useSelector 
 
     const renderCountries = countries.map((country) => {
         return <MenuItem value={country.id} key={country.id}>{country.name.toUpperCase()}</MenuItem>

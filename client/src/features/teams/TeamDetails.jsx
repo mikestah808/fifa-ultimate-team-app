@@ -9,17 +9,14 @@ import { useNavigate } from 'react-router-dom';
 
 function TeamDetails() {
   let navigate = useNavigate();
-  // Get the teamId param from the URL.
   const { id } = useParams();
   const currentUser = useSelector((state) => state.users) 
   const teams = useSelector((state) => state.teams.entities) 
   const {user, loggedIn} = currentUser
-  //use state for whether form will be ADD PLAYER OR EDIT PLAYER
   const [showAddPlayerForm, setShowAddPlayerForm] = useState(false)
   const [team, setTeam] = useState({name: ""})
 
   useEffect(() => {
-    // debugger;
     const findTeam = teams?.find((team) => team.id === parseInt(id))
     if(findTeam){
       setTeam(findTeam)

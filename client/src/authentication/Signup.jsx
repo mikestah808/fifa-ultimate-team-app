@@ -38,7 +38,6 @@ function Signup() {
   console.log(signupUser)
 
 useEffect(() => {
-  // debugger;
   if(signupUser && !signupUser.error){
     navigate("/")
   } 
@@ -47,14 +46,12 @@ useEffect(() => {
 
   function createNewUser(e){
     e.preventDefault()
-      // debugger;
         dispatch(signup(user))
         dispatch(fetchTeams())
   }
 
-        //must dispatch a user to the backend first IN ORDER TO GET VALIDATION ERROR MESSAGES BACK 
-        // create conditional AFTER signup user which states whether the user comes back as valid? (so without any user.errors existing)
-        const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)
+  
+  const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)
 
 
 

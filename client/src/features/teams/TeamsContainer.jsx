@@ -2,16 +2,13 @@ import React, { useEffect } from "react";
 import TeamInput from "./TeamInput";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import Team from "./Team";
-// import { fetchTeams } from "./teamsSlice";
 
 function TeamsContainer() {
-  // const dispatch = useDispatch();
   let navigate = useNavigate();
   const userTeams = useSelector((state) => state.teams.entities) 
   const currentUser = useSelector((state) => state.users) 
-  const {user, loggedIn} = currentUser 
+  const {loggedIn} = currentUser 
 
 
 

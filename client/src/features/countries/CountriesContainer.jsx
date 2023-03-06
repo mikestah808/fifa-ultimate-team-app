@@ -10,7 +10,7 @@ function Countries() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries.entities)
   const currentUser = useSelector((state) => state.users) 
-  const {user, loggedIn} = currentUser 
+  const {loggedIn} = currentUser 
 
   useEffect(() =>{
     dispatch(fetchCountries())

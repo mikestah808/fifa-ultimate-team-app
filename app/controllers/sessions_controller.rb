@@ -4,8 +4,6 @@ class SessionsController < ApplicationController
 
     # login route 
     def create
-        # look up a user in the database
-        # byebug
         user = User.find_by(email: params[:email])
         # verify their login credentials
         # authenticate is a special method given to us by Bcrypt where we can pass the password 
@@ -19,7 +17,6 @@ class SessionsController < ApplicationController
         end
     end
 
-    # clears the email out of the session
     # logout route
     def destroy
         session.delete :user_id

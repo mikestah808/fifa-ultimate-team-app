@@ -10,10 +10,8 @@ import { updatePlayer } from "../teams/teamsSlice";
 function PlayerEdit({ player }) {
   //useDispatch hook from react 
   let dispatch = useDispatch();
-  //useSelector hook to get countries state
   const countries = useSelector((state) => state.countries.entities)
   const [selectedCountry, setSelectedCountry] = useState({})
-
   const { id, name, position, age, rating, club, pace, dribbling, shooting, defending, passing, physical, image_url, price, team_id } = player
 
 
@@ -36,9 +34,6 @@ function PlayerEdit({ player }) {
   useEffect(() => {
     dispatch(fetchCountries())
   },[dispatch])
-
-  console.log("selected country", selectedCountry.id)
-
 
 
   function handleCountryChange(event){ 
@@ -67,8 +62,7 @@ function PlayerEdit({ player }) {
     team_id: team_id,
     country_id: selectedCountry.id
     }
-    // debugger;
-    console.log(playerData)
+    
     event.preventDefault();
     dispatch(updatePlayer(playerData))
 

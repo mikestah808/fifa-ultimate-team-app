@@ -11,12 +11,10 @@ import { Button } from '@mui/material'
 
 function Login() {
   let navigate = useNavigate();
-  // const user = useSelector(state => state.users.user)
   const dispatch = useDispatch();
-
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [error, setError] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
     
 
 
@@ -28,10 +26,8 @@ function Login() {
       }
 
         e.preventDefault()
-        // debugger;
         if(userData.email !== "" && userData.password !== ""){
           dispatch(login(userData))
-          //dispatch teams
           dispatch(fetchTeams())
           navigate("/")
         } else {
@@ -81,28 +77,6 @@ function Login() {
       </h4>
       </div>
     );
-
-    // return (
-    //   <div className='login'>
-    //   <h1>Login Here!</h1>
-    //   <form onSubmit={handleSubmit}>
-    //     <label>
-    //      Email:
-    //         <input type="text" onChange={(event) => setEmail(event.target.value)} value={email}/>
-    //     </label>
-    //     <label>
-    //      Password:
-    //        <input type="password" onChange={(event) => setPassword(event.target.value)} value={password}/>
-    //     </label>
-    //     <Button sx={{ color: 'white' }} type='submit' variant="outlined">Login</Button>
-    //   </form>
-    //   <h4>
-    //     {error}
-    //   </h4>
-    //   </div>
-    // );
-
-
 }
 
 

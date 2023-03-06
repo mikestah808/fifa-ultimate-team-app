@@ -8,9 +8,7 @@ import { fetchCountries } from "../countries/countriesSlice";
 import { useEffect } from "react";
 
 function PlayerInput({ teamId }) {
-  //useDispatch hook from react 
   let dispatch = useDispatch();
-  //useSelector hook to get countries state
   const countries = useSelector((state) => state.countries.entities)
   const errorMessages = useSelector((state) => state.teams.errorMessages)
   const [selectedCountry, setSelectedCountry] = useState({})
@@ -142,7 +140,6 @@ function PlayerInput({ teamId }) {
       </label>
       <br />
       <Button type="submit">add player</Button>
-      {/* {renderErrorMessages} */}
     </form>
     </>
   )

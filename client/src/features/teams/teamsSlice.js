@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import { v4 as uuid } from "uuid";
+
 
 export const fetchTeams = createAsyncThunk("team/fetchTeams", () => {
-  // return a Promise containing the data we want
   return fetch("/teams")
     .then((response) => response.json())
     .then((teams) => teams);
@@ -10,7 +9,6 @@ export const fetchTeams = createAsyncThunk("team/fetchTeams", () => {
 
 
 export const createTeam = createAsyncThunk("team/createTeam", (name) => {
-  // return a Promise containing the data we want
   return fetch("/teams", {
       method: "POST",
       headers: { 'Content-Type': 'application/json'},
@@ -21,7 +19,6 @@ export const createTeam = createAsyncThunk("team/createTeam", (name) => {
 })
 
 export const deleteTeam = createAsyncThunk("team/deleteTeam", (id) => {
-  // return a Promise containing the data we want
   return fetch(`/teams/${id}`, {
       method: "DELETE",
       headers: {"Content-type": "application/json"}
@@ -29,19 +26,7 @@ export const deleteTeam = createAsyncThunk("team/deleteTeam", (id) => {
       .then((resp) => resp.ok)
   })
 
-  // export const teamsLogout = createAsyncThunk("team/teamsLogout", () => {
-  //   // return a Promise containing the data we want
-  //   return fetch("/teamslogout", {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-type": "application/json"
-  //       }
-  //     })
-  //       .then((resp) => resp.ok)
-  //   })
-
   export const createPlayer = createAsyncThunk("player/createPlayer", (name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id) => {
-    // return a Promise containing the data we want
     return fetch("/players", {
         method: "POST",
         headers: { 'Content-Type': 'application/json'},
@@ -52,7 +37,6 @@ export const deleteTeam = createAsyncThunk("team/deleteTeam", (id) => {
   })
 
   export const updatePlayer = createAsyncThunk("player/updatePlayer", (id, name, age, image_url, position, rating, club, price, pace, dribbling, shooting, defending, passing, physical, team_id, country_id) => {
-    // return a Promise containing the data we want
     return fetch(`/players/${id.id}`, {
         method: "PATCH",
         headers: { 'Content-Type': 'application/json'},
@@ -63,7 +47,6 @@ export const deleteTeam = createAsyncThunk("team/deleteTeam", (id) => {
   })
 
   export const deletePlayer = createAsyncThunk("player/deletePlayer", (id) => {
-    // return a Promise containing the data we want
     console.log("id", id.id)
     return fetch(`/players/${id.id}`, {
         method: "DELETE",
@@ -102,7 +85,6 @@ const teamsSlice = createSlice({
         }
     })
     .addCase(deleteTeam.fulfilled, (state, action) => {
-      // debugger;
       state.status = 'idle';
       if (action.payload.errors){
           state.errorMessages = action.payload.errors;
@@ -112,38 +94,22 @@ const teamsSlice = createSlice({
           state.entities.splice(index, 1)
       }
   })
-//   .addCase(logout.fulfilled, (state, action) => {
-//     state.status = 'idle';
-//     if (action.payload.errors){
-//         state.errorMessages = action.payload.errors;
-//     } else{
-//         state.errorMessages = null;
-//         // state.user = action.payload;
-//         state.user = {}
-//         state.loggedIn = false;
-//     }
-// })
+
   .addCase(createPlayer.fulfilled, (state, action) => {
-      // debugger;
-      console.log(action)
         state.status = 'idle';
         if (action.payload.errors){
             state.errorMessages = action.payload.errors;
         } else{
-            // debugger;
             state.errorMessages = null;
             const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
             findTeam.players.push(action.payload)
         }
     })
     .addCase(updatePlayer.fulfilled, (state, action) => {
-      // debugger;
-      console.log(action)
         state.status = 'idle';
         if (action.payload.errors){
             state.errorMessages = action.payload.errors;
         } else{
-            // debugger;
             state.errorMessages = null;
             const findTeam = state.entities.find((team) => team.id === parseInt(action.payload.team_id))
             const player = findTeam.players.find((player) => player.id === action.payload.id);
@@ -164,16 +130,10 @@ const teamsSlice = createSlice({
         }
     })
     .addCase(deletePlayer.fulfilled, (state, action) => {
-      // debugger;
       state.status = 'idle';
       if (action.payload.errors){
           state.errorMessages = action.payload.errors;
       } else{
-          // debugger;
-          // we want to first iterate through the state of teams and return the team where the id === action.payload.team_id
-          //after we find the team, we want to iterate through the array of teams.players and return the players index number in the array where the player.id === action.payload.id 
-          //after we find the players index, we want to remove the player by using the slice method 
-          //HOW DO WE RETURN RETURN THE PLAYER OBJECT WHILE PERFORMING A DELETE REQUEST? 
           state.errorMessages = null;
           const findTeam = state.entities.find((team) => team.id === parseInt(action.meta.arg.team_id))
           const index = findTeam.players.findIndex((player) => player.id === action.meta.arg.id)
@@ -183,6 +143,5 @@ const teamsSlice = createSlice({
   }
 });
 
-// export const { playerAddedToTeam, playerUpdated, playerRemovedFromTeam }  = teamsSlice.actions;
 
 export default teamsSlice.reducer;

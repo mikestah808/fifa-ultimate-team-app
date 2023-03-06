@@ -6,19 +6,11 @@ import { deleteTeam } from "./teamsSlice";
 
 function Team({ team }) {
   const dispatch = useDispatch();
-  const {id, user_id, name, players } = team
+  const {id } = team
 
   
 
   function handleDeleteClick(){
-
-    // const teamData = {
-    //   id: id,
-    //   user_id: user_id,
-    //   name: name,
-    //   players: players
-    // }
-
     dispatch(deleteTeam(id))
   }
 

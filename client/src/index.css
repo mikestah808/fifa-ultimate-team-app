@@ -29,7 +29,6 @@ label {
 
 .homepage, .countrypage, .teampage, .teamdetails, .login {
   text-align: center;
-  /* display: flexbox; */
 }
 
 .signup {
