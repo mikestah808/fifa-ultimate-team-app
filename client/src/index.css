@@ -29,6 +29,7 @@ label {
 
 .homepage, .countrypage, .teampage, .teamdetails, .login {
   text-align: center;
+  font-stretch: condensed;
 }
 
 .signup {
@@ -83,10 +84,10 @@ label {
 }
 
 img {
-  /* display: flex; */
   height: 280px;
   width: 250px;
 }
+
 
 
 

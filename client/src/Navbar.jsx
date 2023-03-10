@@ -32,7 +32,7 @@ function NavBar() {
                     Welcome, {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}!
                   </Typography>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Ultimate Team
+                    ULTIMATE TEAM
                   </Typography>
                   <Button color="inherit" to="/" component={ Link }>Home</Button>
                   <Button color="inherit" to="/countries" component={ Link }>All Countries</Button>
@@ -48,7 +48,7 @@ function NavBar() {
               <AppBar position="static">
                 <Toolbar>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    Ultimate Team
+                    ULTIMATE TEAM
                   </Typography>
                   <Button color="inherit" to="/" component={ Link }>Login</Button>
                   <Button color="inherit" to="/signup" component={ Link }>Signup</Button>

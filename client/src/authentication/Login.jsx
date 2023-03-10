@@ -39,7 +39,7 @@ function Login() {
 
     return (
       <div className='login'>
-      <h1>Login Here!</h1>
+      <h1>Login</h1>
       <br />
       <br />
       <Box
