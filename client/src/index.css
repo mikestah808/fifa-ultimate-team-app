@@ -27,7 +27,7 @@ label {
   height: auto;
 }
 
-.homepage, .countrypage, .teampage, .teamdetails, .login {
+ .countrypage, .teampage, .teamdetails, .login {
   text-align: center;
   font-stretch: condensed;
 }
@@ -86,6 +86,14 @@ label {
 img {
   height: 280px;
   width: 250px;
+}
+
+.box {
+  position: relative;
+  line-height: 4.0;
+  border: 1px transparent;
+  width: 1000px;
+  margin: 11%;
 }
 
 
