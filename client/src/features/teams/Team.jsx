@@ -17,7 +17,7 @@ function Team({ team }) {
 
 
   return (
-    <div>
+    <div className="grid-container">
       <li>
         <h4>{team.name}</h4>
         <Button sx={{ color: 'white' }} component={ Link } to={`${team.id}`}>View Team</Button>
