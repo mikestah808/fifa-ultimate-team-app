@@ -17,9 +17,6 @@ function Signup() {
   let navigate = useNavigate();
   const signupUser = useSelector((state) => state.users.user) 
   const errorMessages = useSelector((state) => state.users.errorMessages) 
-  const [errors, setErrors] = useState([])
-
-  console.log(signupUser)
 
   
   const [user, setUser] = useState({

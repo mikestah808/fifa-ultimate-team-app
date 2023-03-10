@@ -5,7 +5,6 @@ import { createTeam } from "./teamsSlice";
 import { Button } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import { render } from "react-dom";
 
 function TeamInput() {
   const teams = useSelector((state) => state.teams.entities) 
@@ -15,7 +14,7 @@ function TeamInput() {
 
   useEffect(() => {
     const findTeam = teams.find((team) => team.name === name)
-    console.log("team that was just made", findTeam)
+    // console.log("team that was just made", findTeam)
   }, [dispatch])
 
 
@@ -33,19 +32,6 @@ function TeamInput() {
 
   const renderErrorMessages = errorMessages?.map((e) => <h4>{e}</h4>)
 
-
-
-  // return (
-  //   <div>
-  //     <form onSubmit={handleSubmit}>
-  //     <label>Name
-  //     <input onChange={handleChange} value={name}/> 
-  //     </label>
-  //     <button type="submit">Add Team</button>
-  //   </form>
-  //     {renderErrorMessages}
-  //   </div>
-  // )
 
   return (
     <div>

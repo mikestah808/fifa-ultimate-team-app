@@ -3,6 +3,10 @@ import { useDispatch } from "react-redux";
 import { addCountry } from "./countriesSlice";
 import { useSelector } from "react-redux";
 
+import { Button } from "@mui/material";
+import { TextField } from "@mui/material";
+import { Box } from "@mui/system";
+
 function CountryInput() {
   const [name, setName] = useState("")
   const [image, setImage] = useState("")
@@ -34,19 +38,42 @@ function CountryInput() {
 
   const renderErrorMessages = errorMessages?.map((error) => <h4>{error}</h4>)
 
+
   return (
     <div>
-    <form onSubmit={handleSubmit}>
-      <label>Name
-      <input onChange={handleNameChange} value={name}/> 
-      </label>
-      <label>Image
-      <input onChange={handleImageChange} value={image}/> 
-      </label>
-      <button type="submit">add country</button>
-    </form>
-    {renderErrorMessages}
-    </div>
+    <Box
+        onSubmit={handleSubmit}
+        component="form"
+        sx={{
+          '& > :not(style)': { m: 1, width: '25ch' },
+        }}
+        noValidate
+        autoComplete="off"
+      >
+        <br />
+        <TextField type="text" id="Name" value={name} onChange={handleNameChange} label="Name" variant="outlined" sx={{
+          input: {
+          color: "white"
+          },
+          label: {
+            color: "white"
+          }
+        }}/>
+        <br />
+         <TextField type="text" id="Image" value={image} onChange={handleImageChange} label="Image" variant="outlined" sx={{
+          input: {
+          color: "white"
+          },
+          label: {
+            color: "white"
+          }
+        }}/>
+        <br />
+        <br />
+        <Button sx={{ color: 'white' }} type='submit' variant="outlined">Submit</Button>
+      </Box>
+        {renderErrorMessages}
+      </div>
   )
 }
 

@@ -32,6 +32,10 @@ label {
   font-stretch: condensed;
 }
 
+.grid-container {
+  display: inline-grid;
+}
+
 .signup {
   text-align: center;
   color: white;

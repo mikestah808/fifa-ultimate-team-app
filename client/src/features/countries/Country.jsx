@@ -6,7 +6,7 @@ function Team({ country }) {
 
 
   return (
-    <div>
+    <div className="grid-container">
       <li>
         <h4>{country.name}</h4>
         <img className="countryflag" src={country.image_url}/>
