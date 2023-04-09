@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   background-image: url("https://wallpaper.dog/large/997118.jpg");
@@ -98,7 +102,7 @@ img {
   border: 1px transparent;
   width: 1000px;
   margin: 11%;
-}
+} 
 
 
 

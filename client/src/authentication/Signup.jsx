@@ -54,7 +54,7 @@ useEffect(() => {
 
   return (
     <div className="signup">
-    <h1>Create an Account!</h1>
+    <h1 className="text-red-500">Create an Account!</h1>
   <Box
     onSubmit={createNewUser}
     component="form"

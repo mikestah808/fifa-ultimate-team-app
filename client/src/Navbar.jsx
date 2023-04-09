@@ -26,7 +26,7 @@ function NavBar() {
     if(loggedIn){
         return (
             <Box sx={{ flexGrow: 1 }}>
-              <AppBar position="static">
+              <AppBar position="static" style={{backgroundColor: "black"}}>
                 <Toolbar>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     Welcome, {user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)}!
@@ -45,7 +45,7 @@ function NavBar() {
     } else {
         return (
             <Box sx={{ flexGrow: 1 }}>
-              <AppBar position="static">
+              <AppBar position="static" style={{backgroundColor: "black"}}>
                 <Toolbar>
                   <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     ULTIMATE TEAM
